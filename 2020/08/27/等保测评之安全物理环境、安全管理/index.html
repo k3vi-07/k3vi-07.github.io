@@ -1,0 +1,1704 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="等保测评之安全物理环境、安全管理">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>等保测评之安全物理环境、安全管理 | Ex1t 安全团队</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Ex1t 安全团队</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Ex1t 安全团队</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">等保测评之安全物理环境、安全管理</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%AD%89%E4%BF%9D%E6%B5%8B%E8%AF%84/">
+                                <span class="chip bg-color">等保测评</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-08-27
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    13 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><img src="https://www.ex1t.xyz/wp-content/uploads/2020/08/u38794416892821884868fm26gp0-300x207.jpg"></p>
+<h1 id="测评方法"><a href="#测评方法" class="headerlink" title="测评方法"></a>测评方法</h1><h2 id="测评工具"><a href="#测评工具" class="headerlink" title="测评工具"></a>测评工具</h2><ul>
+<li>安全管理测评指导书</li>
+<li>安全物理环境测评作业指导书<h2 id="作业指导书开发基本步骤"><a href="#作业指导书开发基本步骤" class="headerlink" title="作业指导书开发基本步骤"></a>作业指导书开发基本步骤</h2></li>
+<li>第一步：从《基本要求中》选择‘控制点’（测评指标）和要求项（测评项）</li>
+<li>第二步：从《测评要求》中选择”测评方法“</li>
+<li>第三步：结合信息系统实际情况调整”测评方法“</li>
+<li>第四步最终形成作业指导书<h2 id="测评方式"><a href="#测评方式" class="headerlink" title="测评方式"></a>测评方式</h2></li>
+<li>访谈</li>
+<li>核查<h2 id="核查与访谈的关系"><a href="#核查与访谈的关系" class="headerlink" title="核查与访谈的关系"></a>核查与访谈的关系</h2></li>
+<li> 通过访谈获得肯定的答案，通过核查验证访谈结果。<h2 id="访谈技巧访谈技巧"><a href="#访谈技巧访谈技巧" class="headerlink" title="访谈技巧访谈技巧"></a>访谈技巧访谈技巧</h2></li>
+<li>基于作业指导书开展</li>
+<li>访谈对象的选择，覆盖适当的层次和职能；</li>
+<li>访谈应在正常的工作时间和工作地点</li>
+<li>说明访谈和做记录的原因</li>
+<li>访谈可以从请对方描述工作开始</li>
+<li>尽量避免有倾向性答案的问题</li>
+<li>感谢对方配合<h2 id="问题问题"><a href="#问题问题" class="headerlink" title="问题问题"></a>问题问题</h2></li>
+<li>开放式和非开放式<h2 id="核查核查"><a href="#核查核查" class="headerlink" title="核查核查"></a>核查核查</h2></li>
+<li>是指测评人员通过对测评对象进行观察、查验、分析等活动，获取证据以证明其安全保护措施是否有效的一种方法<h2 id="核查对象核查对象"><a href="#核查对象核查对象" class="headerlink" title="核查对象核查对象"></a>核查对象核查对象</h2></li>
+<li>各类文件-制度文档</li>
+<li>操作规程-执行记录</li>
+<li>物理环境-基础础设施<h1 id="安全管理测评流程"><a href="#安全管理测评流程" class="headerlink" title="安全管理测评流程"></a>安全管理测评流程</h1><h2 id="基本活动基本活动"><a href="#基本活动基本活动" class="headerlink" title="基本活动基本活动"></a>基本活动基本活动</h2></li>
+<li>核查是否存在有关的规定、制度或规程文档；</li>
+<li>核查文档的描述细节是否设计相关的内容；</li>
+<li>核查是否存在有关执行过程的记录文件或说明文件（证据）</li>
+<li>核查文件的记录内容是否与规定、制度或规程要求一致；</li>
+<li>访谈相关人员，要求其对描述不理解或者记录不理解内容的解释或说明</li>
+<li>访谈相关人员，要求其对管理过程或执行过程解释和说明。<h2 id="测评流程测评流程"><a href="#测评流程测评流程" class="headerlink" title="测评流程测评流程"></a>测评流程测评流程</h2></li>
+<li>第一步，根据现场配合人员名单，进一步明确协调人员、访谈人员及时间</li>
+<li>第二步，根据检查文档列表，获得制度、记录、规程等各类文档，并填写文档交接单；</li>
+<li>第三步，审阅各类文档，并在现场测评作业指导书的相关项中进行结果记录</li>
+<li>第四步，针对不确定项访谈相关人员或获得额外证据并记录；</li>
+<li>第五步，整理作业指导书的结果记录，并确认签字</li>
+<li>第六步，归还所有文档，并在文档交接单中签字。<h1 id="安全物理环境测评流程"><a href="#安全物理环境测评流程" class="headerlink" title="安全物理环境测评流程"></a>安全物理环境测评流程</h1><h2 id="基本活动基本活动-1"><a href="#基本活动基本活动-1" class="headerlink" title="基本活动基本活动"></a>基本活动基本活动</h2></li>
+<li>实地察看场地条件、环境条件是否符合要求</li>
+<li>实地察看设备、设施是否工作正常</li>
+<li>实地查看是否存在有关设备、设施、标签、标识等；</li>
+<li>核查设备、设施的检查报告或维护日志、核查机房设计验收文档</li>
+<li>访谈相关人员，要求对不理解之处进行解释说明；</li>
+<li>访谈相关人员，要求对管理过程或执行过程补充解释和说明<h2 id="测评流程测评流程-1"><a href="#测评流程测评流程-1" class="headerlink" title="测评流程测评流程"></a>测评流程测评流程</h2></li>
+<li>第一步，针对安全物理环境的测评项访谈相关人员</li>
+<li>第二步，实地查看场地、环境条件以及设备、设施运行状态；</li>
+<li>第三步，实地查看存在的有关设备、设施运行状态；</li>
+<li>第四步，检查检测报告或维护日志、检查机房设计验收文档（可在进机房前完成）；</li>
+<li>第五步，针对不确定项访谈相关人员；</li>
+<li>第六步，整理作业指导书，整理结果记录并确认签字<h2 id="测评要点测评要点"><a href="#测评要点测评要点" class="headerlink" title="测评要点测评要点"></a>测评要点测评要点</h2></li>
+<li>机房、建筑的各类设计/验收文档（机房位置选择说明、机房建筑承受能力、机房建筑防雷、机房综合布线及接地、自动消防系统、机房防火和新风系统、电力供应和电磁防护等）；</li>
+<li>机房配备电子门禁系统、分区管理、登录记录、专人陪同；</li>
+<li>设备和线路贴不易去除标识；</li>
+<li>设置专人值守的视频监控系统或机房报警系统；</li>
+<li>电源线和信号线上的防雷措施（光纤接入除外）</li>
+<li>自动消防报警系统运行状态、手提式或便携式灭火器的摆放位置及有效期、消防演习记录</li>
+<li>机房天花板及墙壁是否存在防潮及结露现象，机房屋顶或活动办下面是否有水管、对为开放窗户的防雨措施；</li>
+<li>机房空调温度显示、机房日常巡检温度记录；</li>
+<li>双路师电接入、ups满负荷时最大负载、备用供电系统，电力供应应急演练记录。<h2 id="测评难点测评难点"><a href="#测评难点测评难点" class="headerlink" title="测评难点测评难点"></a>测评难点测评难点</h2></li>
+<li>机房防盗报警系统</li>
+<li>机房区域防火隔离</li>
+<li>双路市电供电或备用供电系统。<h2 id="安全物理环境测评注意事项"><a href="#安全物理环境测评注意事项" class="headerlink" title="安全物理环境测评注意事项"></a>安全物理环境测评注意事项</h2></li>
+<li>事项一：现场查看机房基础设施建设情况时，设施的有无并不能反映落实与否，关键查看设施是否有效的、正常运行；</li>
+<li>事项二：当机房根据用途不同分为多个房间，处于不同位置时，各个机房应按相关的物理要求分别检查。<h1 id="安全管理制度"><a href="#安全管理制度" class="headerlink" title="安全管理制度"></a>安全管理制度</h1><h2 id="测评要点"><a href="#测评要点" class="headerlink" title="测评要点"></a>测评要点</h2></li>
+<li>总体方针政策文件、各类管理制度、各种操作规范及记录表单四类文档；</li>
+<li>四类文档间的连贯性、完备性以及管理制度的覆盖面</li>
+<li>管理制度文件格式、版本、装订记录、各种评审记录以及发放等级记录；</li>
+<li>制定和修订方面的文字具体要求，修订计划，修订流程；</li>
+<li>安全管理制度、修订的责任人、具体制定、发布流程。<h2 id="管理制度文件体系管理制度文件体系"><a href="#管理制度文件体系管理制度文件体系" class="headerlink" title="管理制度文件体系管理制度文件体系"></a>管理制度文件体系管理制度文件体系</h2></li>
+<li>第一层 安全方针政策  信息啊暖方针政策，总体安全，说明机构安全工作的总体目标、范围、原则和安全框架等</li>
+<li>第二层 安全管理制度 对安全管理活动中的各类管理建立安全制度管理，约束管理行为。</li>
+<li>第三层 技术标准、规范 安全管理制度的具体技术实现细节，对管理人员或者操作人员的日常管理操作建立操作规程</li>
+<li>第四层 流程、表单、记录 安全制度、规范实施所需履行的流程，及需填写的表单，用于记录数据、监控实施。<h2 id="测评难点测评难点-1"><a href="#测评难点测评难点-1" class="headerlink" title="测评难点测评难点"></a>测评难点测评难点</h2></li>
+<li>安全方针、管理制度、操作规程以及记录表单四类文件形成管理制度文件体系；</li>
+<li>管理制度定期的评审、修订、完善。</li>
+<li>安全管理机构<h2 id="测评要点测评要点-1"><a href="#测评要点测评要点-1" class="headerlink" title="测评要点测评要点"></a>测评要点测评要点</h2></li>
+<li>查看岗位职责文件了解：安全管理组织构成情况，信息安全领导小组-信息安全管理工作的职能部门-具体岗位，具体职责分工情况；</li>
+<li>机构人员及岗位人员配备情况(如安全管理员、系统管理员、网络管理员、审计员）；</li>
+<li>根据岗位人员配备名单了解安全管理员是否时专职人员，其它岗位人员配备情况。</li>
+<li>审批事项、审批部门、批准人及审批程序等（制度），审批过程实际执行记录，了解授权和审批情况；</li>
+<li>沟通和合作情况，了解部门内外沟通和合作情况，各类会议纪要、外协单位联系档案等；</li>
+<li>安全检查周期、内容、程序等，各类安全检查表格、以往安全检查记录或总结了解对信息系统的安全检查情况。<h2 id="测试难点测试难点"><a href="#测试难点测试难点" class="headerlink" title="测试难点测试难点"></a>测试难点测试难点</h2></li>
+<li>网络安全领导小组或网络安全管理委员会的发布文件或授权文件；</li>
+<li>专职安全管理员</li>
+<li>对重要活动的逐级审批制度</li>
+<li>定期的全面安全检查<h1 id="安全管理人员"><a href="#安全管理人员" class="headerlink" title="安全管理人员"></a>安全管理人员</h1><h2 id="测评要点测评要点-2"><a href="#测评要点测评要点-2" class="headerlink" title="测评要点测评要点"></a>测评要点测评要点</h2></li>
+<li>录用、离岗、安全意识教育和培训方面的管理要求；</li>
+<li>安全保密协议和关键岗位的安全协议；</li>
+<li>离岗交接记录；</li>
+<li>安全技能考核记录</li>
+<li>培训计划和培训记录</li>
+<li>外部人员访问方面的管控措施<h2 id="测评难点测评难点-2"><a href="#测评难点测评难点-2" class="headerlink" title="测评难点测评难点"></a>测评难点测评难点</h2></li>
+<li>关键岗位人员的社会背景审查，关键岗位安全协议</li>
+<li>安全技能和安全认知的考核</li>
+<li>对外部人员允许访问的区域、系统、设备、信息等内容的详细书面规定。<h1 id="安全建设管理"><a href="#安全建设管理" class="headerlink" title="安全建设管理"></a>安全建设管理</h1><h2 id="测评要点测评要点-3"><a href="#测评要点测评要点-3" class="headerlink" title="测评要点测评要点"></a>测评要点测评要点</h2></li>
+<li>测评对象的定级报告、备案证书；</li>
+<li>测评对象的安全保护等级与其它级别保护对象关系的整体规划方案；</li>
+<li>安全设计方案、工程实施方案</li>
+<li>软件开发、产品采购、工程实施、测试验收、系统交付等方面的管控措施；</li>
+<li>过程控制记录、各个阶段产品评审记录、测试验收报告；与服务供应商签订的保密协议或安全责任书。<h2 id="测评难点测评难点-3"><a href="#测评难点测评难点-3" class="headerlink" title="测评难点测评难点"></a>测评难点测评难点</h2></li>
+<li>对主要的活动均需要遵循制度要求，规范化地执行各种活动，留有记录文件；</li>
+<li>外包开发软件安装前的恶意代码检测和后门程序审查。<h1 id="安全运维管理"><a href="#安全运维管理" class="headerlink" title="安全运维管理"></a>安全运维管理</h1><h2 id="环境管理"><a href="#环境管理" class="headerlink" title="环境管理"></a>环境管理</h2></li>
+<li>指定专门的部门或者人员负责机房安全</li>
+<li>机房安全管理制度，机房基础设施定期维护记录、机房进出登记记录；</li>
+<li>重要的区域安全管理<h2 id="资产管理"><a href="#资产管理" class="headerlink" title="资产管理"></a>资产管理</h2></li>
+<li>编制与保护对象相关事务资产清单；</li>
+<li>根据资产清单以及重要程度，经行标识和选择相应的管理措施；</li>
+<li>对信息分类标识的原则和方法进行说明的文档<h2 id="介质管理"><a href="#介质管理" class="headerlink" title="介质管理"></a>介质管理</h2></li>
+<li>介质本地、异地存储环境条件，分类和标识；</li>
+<li>介质物理传输过程进行控制，并对查询和归档进行等级。<h2 id="设备维护管理"><a href="#设备维护管理" class="headerlink" title="设备维护管理"></a>设备维护管理</h2></li>
+<li>指定设备万里负责人或负责部门</li>
+<li>建立配套设施、软硬件维护方面的管理制度</li>
+<li>设备带离机房或者办公环境的管控措施</li>
+<li>含有存储介质的设备在报废或重用前，应进行完全的清除或被安全覆盖。<h2 id="漏洞和风险管理"><a href="#漏洞和风险管理" class="headerlink" title="漏洞和风险管理"></a>漏洞和风险管理</h2></li>
+<li>采取必要的措施识别安全漏洞和隐患，采取相应的控制手段和措施；</li>
+<li>应定期开展安全测评，采取措施应对测评发现的安全问题。<h2 id="网络和系统安全管理"><a href="#网络和系统安全管理" class="headerlink" title="网络和系统安全管理"></a>网络和系统安全管理</h2></li>
+<li>应划分不同的管理员角色进行网络和系统的运维管理</li>
+<li>应建立网络和系统方面的安全管理制度、操作手册、规程；</li>
+<li>日常工作，包括本地用户和远程用户的访问管理、网络接入管理、网络设备管理、漏洞扫描、网络状态监控、检测和报警、账户管理、角色权限管理、补丁管理、日志或审计信息分析、日常维护等；</li>
+<li>应严格控制变更性运维（运维工具、运程运维的开通）<h2 id="恶意代码防范管理"><a href="#恶意代码防范管理" class="headerlink" title="恶意代码防范管理"></a>恶意代码防范管理</h2></li>
+<li>提高所有用户的恶意代码防范意识，对外来计算机或存储设备接入需进行检查</li>
+<li>应定期验证防范恶意代码攻击的技术措施的有效性<h2 id="配置管理"><a href="#配置管理" class="headerlink" title="配置管理"></a>配置管理</h2></li>
+<li>应记录和保存基本配置信息，如网络拓扑结构、各设备安装的软件组件、版本、配置参数等；</li>
+<li>基本配置信息改变纳入变更范畴，实施对配置信息改变进行控制并及时更新。<h2 id="密码管理"><a href="#密码管理" class="headerlink" title="密码管理"></a>密码管理</h2></li>
+<li>应遵循密码相关国家标准和行业标准</li>
+<li>使用密码主管部门认证核准的密码技术产品。<h2 id="变更管理"><a href="#变更管理" class="headerlink" title="变更管理"></a>变更管理</h2></li>
+<li>应明确变更控制策略；</li>
+<li>应建立变更的申报和审批控制程序</li>
+<li>变更审批记录</li>
+<li>变更后相关的管理制度和操作规程的变化</li>
+<li>失败变更的恢复文件化程度及恢复过程的演练记录<h2 id="备份和恢复管理"><a href="#备份和恢复管理" class="headerlink" title="备份和恢复管理"></a>备份和恢复管理</h2></li>
+<li>识别需要定期备份的重要业务信息、数据、系统等</li>
+<li>备份和恢复的策略文档及操作规程，如备份方式、频度、介质、保存周期等；</li>
+<li>数据的备份策略和恢复策略以及备份程序和恢复程序；</li>
+<li>备份介质的有效性检查记录。<h1 id="安全事件处理"><a href="#安全事件处理" class="headerlink" title="安全事件处理"></a>安全事件处理</h1></li>
+<li>应及时向安全管理部门报告所发现的安全弱点和可疑事件；</li>
+<li>安全事件报告和处置管理制度，包括安全事件定义、定级、报告流程、不同事件的响应和处置流程；</li>
+<li>安全事件处置过程的记录</li>
+<li>应急预案管理</li>
+<li>应急预案总体框架</li>
+<li>各类主要事件的具体应急预案；</li>
+<li>应急预案涉及人员、设备等的资源满足情况</li>
+<li>应急预案的培训记录、演练记录。<h2 id="外包运维管理"><a href="#外包运维管理" class="headerlink" title="外包运维管理"></a>外包运维管理</h2></li>
+<li>外包运维服务商的选择符合规定；</li>
+<li>签订协议，明确外包运维范围、工作内容、明确相关安全要求；</li>
+<li>在技术方面和管理方面均具有按照等级保护要求开展运维工作能力。<h2 id="测评难点"><a href="#测评难点" class="headerlink" title="测评难点"></a>测评难点</h2></li>
+<li>重要区域的安全管理</li>
+<li>信息分类标识的原则和方法；</li>
+<li>重要介质中数据或软件的加密存储；</li>
+<li>安全审计的集中管理；</li>
+<li>定期的网络和系统的漏洞扫描</li>
+<li>对移动时、便携式设备接入网络安全管理</li>
+<li>对违规联网行为的管理。</li>
+<li>系统运行日志和审计数据分析</li>
+<li>系统角色权限的划分和管理</li>
+<li>变更失败的文件化恢复程序，变更失败的恢复演练</li>
+<li>变更后对相关制度和操作规程修订</li>
+<li>数据恢复或系统切换操作记录，备份介质的有效性检查；</li>
+<li>信息安全事件的应急预案，应急预案培训和演练；</li>
+<li>应急预案文档的维护和更新<h2 id="安全管理测评注意事项"><a href="#安全管理测评注意事项" class="headerlink" title="安全管理测评注意事项"></a>安全管理测评注意事项</h2></li>
+<li>事项一：系统某控制点或某条要求不适合该级别的基本要求（如外包开发、自行软件开发）；一定不要滥用“不适用”若果某条没达到要求，由于下面一条要求预期是有关联关系，那么这条要求不能说不适用而是不符合。或者说只能由不是用推到到不适用，而不能由不符合推到为不适用</li>
+<li>事项二、当访谈结果与检查结果不一致，应综合分析，不能片面采信任一方。</li>
+<li>事项三:访谈以具体对象展开，而不以控制点或要求展开;</li>
+<li>事项四:访谈是获得证据不可或缺的手段，但往往访谈回答信息的客观性、准确性，依被访谈角色对相关内容了解程度、以及双方的有效沟通而定，因此需要测评人员正确引导和判断;</li>
+<li>事项五:在检查文档时发现不同文档针对同一方面内容要求不一致，应分析原因，结合其他测评方式所获证据来判断;事项六:所检查的文档应是机构目前已正式发布实施的有效文档;</li>
+<li>事项七:制度文档的审阅一方面要检查制度文档的规范内容，另外应通过审阅记录文档检查制度文档的落实，若二者存在不致，应进一步寻找证据，最终确认是制度未得到有效落实还是制度文档需要修订有效落实还是制度文档需要修订;</li>
+<li>事项八:其他测评项获取的证据，也可能会成为某一测评项判定的依据;</li>
+<li>事项九:当由于某种原因机构无法提供原有的所要求的证据时其他证据效力等同时，可采纳;</li>
+<li>事项十:文档名称可能不同，需进一步确认文档具体内容。</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">shmily</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://www.ex1t.xyz/2020/08/27/%E7%AD%89%E4%BF%9D%E6%B5%8B%E8%AF%84%E4%B9%8B%E5%AE%89%E5%85%A8%E7%89%A9%E7%90%86%E7%8E%AF%E5%A2%83%E3%80%81%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86/">https://www.ex1t.xyz/2020/08/27/%E7%AD%89%E4%BF%9D%E6%B5%8B%E8%AF%84%E4%B9%8B%E5%AE%89%E5%85%A8%E7%89%A9%E7%90%86%E7%8E%AF%E5%A2%83%E3%80%81%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">shmily</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%AD%89%E4%BF%9D%E6%B5%8B%E8%AF%84/">
+                                    <span class="chip bg-color">等保测评</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'QS25DiKJV53FDn9TcDUAOa8z-gzGzoHsz',
+        appKey: 'reyqGLYYvws75kGst7ypLWpq',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '兄弟，快来评论吧'
+    });
+</script>
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/09/14/%E5%87%A0%E4%B8%AA%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="几个渗透工具的简单使用">
+                        
+                        <span class="card-title">几个渗透工具的简单使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            诚默
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">工具</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/08/27/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8Asql%E5%9F%BA%E7%A1%80/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="mysql数据库学习笔记之数据库及MySQL基础">
+                        
+                        <span class="card-title">mysql数据库学习笔记之数据库及MySQL基础</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            shmily
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/mysql/">
+                        <span class="chip bg-color">mysql</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('50')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Ex1t 安全团队<br />'
+            + '文章作者: Ex1t团队<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2020</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">Ex1t团队</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">23.9k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "11";
+                    var startDate = "3";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">皖ICP备 19019341号-1</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:k3vi@ex1t.xyz" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+        <div style="position:fixed;bottom:125px;right:16px;cursor: pointer;">
+            <a title="兔小巢" target="_blank" rel="noopener" href="https://support.qq.com/products/301992"><i class="fa fa-comments fa-3x"  aria-hidden="true"></i></a>
+        </div>
+    
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="/libs/background/ribbon-refresh.min.js" async="async"></script>
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
