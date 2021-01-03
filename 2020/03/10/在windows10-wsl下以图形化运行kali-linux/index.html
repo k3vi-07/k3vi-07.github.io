@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="一题python加密题">
+    <meta name="keywords" content="在windows10-wsl下以图形化运行kali-linux">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>一题python加密题 | Ex1t</title>
+    <title>在windows10-wsl下以图形化运行kali-linux | Ex1t</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -240,12 +240,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">一题python加密题</h1>
+                    <h1 class="description center-align post-title">在windows10-wsl下以图形化运行kali-linux</h1>
                 </div>
             </div>
         </div>
@@ -361,12 +361,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/kali/">
+                                <span class="chip bg-color">kali</span>
                             </a>
                         
-                            <a href="/tags/ctf/">
-                                <span class="chip bg-color">Ctf</span>
+                            <a href="/tags/wsl/">
+                                <span class="chip bg-color">wsl</span>
                             </a>
                         
                     </div>
@@ -381,7 +381,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-08
+                    2020-03-10
                 </div>
                 
 
@@ -390,14 +390,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    171
+                    830
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -420,80 +420,36 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="http://img.ex1t.xyz/20200708115429.jpeg"></p>
-<blockquote>
-<p>之前做ctf过程中遇到了一个使用python写写的加密程序.</p>
+                <blockquote>
+<p>要想在Windows下不使用虚拟机运行Linux，首先需要了解的知识点是到底wsl和xfce是什么东西</p>
 </blockquote>
-<h2 id="加密过程源码"><a href="#加密过程源码" class="headerlink" title="加密过程源码"></a>加密过程源码</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> base64
+<h2 id="什么是wsl"><a href="#什么是wsl" class="headerlink" title="什么是wsl"></a>什么是wsl</h2><p>Windows Subsystem for Linux（简称WSL）是一个在Windows 10上能够运行原生Linux二进制可执行文件（ELF格式）的兼容层。简单点说，也就是Windows下的现有的Linux子系统。<br><img src="http://img.ex1t.xyz/20201230172546.png"></p>
+<h2 id="什么是Xfce"><a href="#什么是Xfce" class="headerlink" title="什么是Xfce"></a>什么是Xfce</h2><p>Xfce是独立的软件组件构成，可根据需要单独使用或者组合在一起提供计算机图形桌面环境的全面功能，它提供轻量级桌面环境。它明显的优点为快速、轻量、界面美观和对用户友好。</p>
+<p>所以，本篇文章将对安装过程进行详细讲述。</p>
+<h2 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h2><h3 id="预先配置系统设置"><a href="#预先配置系统设置" class="headerlink" title="预先配置系统设置"></a>预先配置系统设置</h3><p>（1）打开子系统功能<br><img src="http://img.ex1t.xyz/20201230172602.png"><br>（2）打开Microsoft store下载ubuntu<br><img src="http://img.ex1t.xyz/20201230172615.png"><br>由于我的电脑打不开应用商店，所以才有的本次操作，勾选这两个才可以打??应用商店。（如果您可以，请忽略此步）</p>
+<p>（3）下载Ubuntu<br><img src="http://img.ex1t.xyz/20201230172630.png"></p>
+<p>下载成功之后启动ubuntu<br>终端中sudo su可以切换到root权限<br><img src="http://img.ex1t.xyz/20201230172653.png"></p>
+<h3 id="配置wsl"><a href="#配置wsl" class="headerlink" title="配置wsl"></a>配置wsl</h3><p>(1)配置源<br>如果没有配置源，使用apt-get命令安装软件时常常会失败<br>编辑配置源vim /etc/apt/sources.list</p>
+<pre class="line-numbers language-list" data-language="list"><code class="language-list">#添加阿里源
+deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>保存后更新源<br>apt-get update<br>apt-get upgrade<br>时间会比较长</p>
+<p>（2）下载xfce<br>apt install xfce4<br>apt install xfce4-session</p>
+<p>安装完之后需要稍微配置一下 export DISPLAY=localhost:0<br>这个只是临时的环境变量配置，每次启动wsl都要配置一下，我们可以将其写到文件中，就不需要每次都重新配置了。<br>echo “export DISPLAY=:0.0”&gt;&gt; ~/.bashrc<br>或者<br>echo “export DISPLAY=localhost:0”&gt;&gt; ~/.bashrc</p>
+<p>（3）启动桌面<br>打开<img src="http://img.ex1t.xyz/20201230172713.png"><br>这里我选的最后一个，然后一路next<br><img src="http://img.ex1t.xyz/20201230172726.png"><br>之后就是什么都没有的灰色界面，不用管，在wsl下输入命令xfce4-session<br>若会出现如下图所示，则表明安装成功<br><img src="http://img.ex1t.xyz/20201230172740.png"></p>
+<p>安装成之后就可以在xfce桌面中进行美化、安装工具等等，相比于VM十分方便快捷。</p>
+<h2 id="借用上述安装方法安装和运行kali-linux"><a href="#借用上述安装方法安装和运行kali-linux" class="headerlink" title="借用上述安装方法安装和运行kali linux"></a>借用上述安装方法安装和运行kali linux</h2><p>由于这又是一个新下载的子系统，所以同样的需要配置源，配置wsl<br>sudo vim /etc/apt/sources.list<br>&gt;这次我添加的是中科大的源<br>deb <a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/kali">https://mirrors.ustc.edu.cn/kali</a> kali-rolling main non-free contrib<br>deb-src <a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/kali">https://mirrors.ustc.edu.cn/kali</a> kali-rolling main non-free contrib</p>
+<p>然后步骤相同，更新源，下载xfce4，最后打开XLaunch 在wsl中输入xfce4-session<br>使得在xfce中可以运行kali linux子系统。<br><img src="http://img.ex1t.xyz/20201230172755.png"><br><img src="http://img.ex1t.xyz/20201230172835.png"><br>如图所示，xfce可以运行任何你所拥有的子系统。</p>
+<p>当然了，在这个桌面里同样可以实现其他在kali上实现的功能，总之，xfce桌面就是又强大又便捷，你值得拥有。<br>?</p>
 
-
-<span class="token keyword">def</span> <span class="token function">encode1</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    s <span class="token operator">=</span> <span class="token string">''</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> ans<span class="token punctuation">:</span>
-        x <span class="token operator">=</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token number">36</span>
-        x <span class="token operator">=</span> x <span class="token operator">+</span> <span class="token number">25</span>
-        s <span class="token operator">+=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> s
-
-
-<span class="token keyword">def</span> <span class="token function">encode2</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    s <span class="token operator">=</span> <span class="token string">''</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> ans<span class="token punctuation">:</span>
-        x <span class="token operator">=</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">36</span>
-        x <span class="token operator">=</span> x <span class="token operator">^</span> <span class="token number">36</span>
-        s <span class="token operator">+=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> s
-
-
-<span class="token keyword">def</span> <span class="token function">encode3</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> base64<span class="token punctuation">.</span>b32encode<span class="token punctuation">(</span>ans<span class="token punctuation">)</span>
-
-
-flag <span class="token operator">=</span> <span class="token string">' '</span>
-<span class="token keyword">print</span> <span class="token string">'Please Input your flag:'</span>
-flag <span class="token operator">=</span> <span class="token builtin">raw_input</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-final <span class="token operator">=</span> <span class="token string">'UC7KOWVXWVNKNIC2XCXKHKK2W5NLBKNOUOSK3LNNVWW3E==='</span>
-<span class="token keyword">if</span> encode3<span class="token punctuation">(</span>encode2<span class="token punctuation">(</span>encode1<span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> final<span class="token punctuation">:</span>
-    <span class="token keyword">print</span> <span class="token string">'correct'</span>
-<span class="token keyword">else</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span> <span class="token string">'wrong'</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="解密算法源码"><a href="#解密算法源码" class="headerlink" title="解密算法源码"></a>解密算法源码</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> base64
-
-
-final <span class="token operator">=</span> <span class="token string">'UC7KOWVXWVNKNIC2XCXKHKK2W5NLBKNOUOSK3LNNVWW3E==='</span>
-
-<span class="token keyword">def</span> <span class="token function">decode3</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    s <span class="token operator">=</span> base64<span class="token punctuation">.</span>b32decode<span class="token punctuation">(</span>ans<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> s
-
-<span class="token keyword">def</span> <span class="token function">decode2</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    s <span class="token operator">=</span> <span class="token string">''</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> ans<span class="token punctuation">:</span>
-        x <span class="token operator">=</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token number">36</span>
-        x <span class="token operator">=</span> x <span class="token operator">-</span> <span class="token number">36</span>
-        s <span class="token operator">+=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> s
-
-<span class="token keyword">def</span> <span class="token function">decode1</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    s <span class="token operator">=</span> <span class="token string">''</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> ans<span class="token punctuation">:</span>
-        x <span class="token operator">=</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">25</span>
-        x <span class="token operator">=</span> x <span class="token operator">^</span> <span class="token number">36</span>
-        s <span class="token operator">+=</span> <span class="token builtin">chr</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> s
-
-
-th <span class="token operator">=</span> decode3<span class="token punctuation">(</span>final<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>th<span class="token punctuation">)</span>
-se <span class="token operator">=</span> decode2<span class="token punctuation">(</span>th<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>se<span class="token punctuation">)</span>
-fr <span class="token operator">=</span> decode1<span class="token punctuation">(</span>se<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>fr<span class="token punctuation">)</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -509,7 +465,7 @@ fr <span class="token operator">=</span> decode1<span class="token punctuation">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">k3vi</a>
+                    <a href="/about" rel="external nofollow noreferrer">ex1t</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -519,7 +475,7 @@ fr <span class="token operator">=</span> decode1<span class="token punctuation">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.ex1t.xyz/2020/07/08/%E4%B8%80%E9%A2%98python%E5%8A%A0%E5%AF%86%E9%A2%98/">https://www.ex1t.xyz/2020/07/08/%E4%B8%80%E9%A2%98python%E5%8A%A0%E5%AF%86%E9%A2%98/</a>
+                    <a href="https://www.ex1t.xyz/2020/03/10/%E5%9C%A8windows10-wsl%E4%B8%8B%E4%BB%A5%E5%9B%BE%E5%BD%A2%E5%8C%96%E8%BF%90%E8%A1%8Ckali-linux/">https://www.ex1t.xyz/2020/03/10/%E5%9C%A8windows10-wsl%E4%B8%8B%E4%BB%A5%E5%9B%BE%E5%BD%A2%E5%8C%96%E8%BF%90%E8%A1%8Ckali-linux/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -532,7 +488,7 @@ fr <span class="token operator">=</span> decode1<span class="token punctuation">
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">k3vi</a>
+                    <a href="/about" target="_blank">ex1t</a>
                     !
                 </span>
             </div>
@@ -557,12 +513,12 @@ fr <span class="token operator">=</span> decode1<span class="token punctuation">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
+                                <a href="/tags/kali/">
+                                    <span class="chip bg-color">kali</span>
                                 </a>
                             
-                                <a href="/tags/ctf/">
-                                    <span class="chip bg-color">Ctf</span>
+                                <a href="/tags/wsl/">
+                                    <span class="chip bg-color">wsl</span>
                                 </a>
                             
                         </div>
@@ -999,13 +955,13 @@ fr <span class="token operator">=</span> decode1<span class="token punctuation">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/07/30/%E6%BC%8F%E6%B4%9E%E5%A4%A7%E6%80%BB%E7%BB%931-sql%E6%B3%A8%E5%85%A5/">
+                <a href="/2020/04/21/%E5%8C%BF%E5%90%8D%E9%82%AE%E7%AE%B1%E3%80%81%E5%85%8D%E8%B4%B9%E4%B8%B4%E6%97%B6%E9%82%AE%E7%AE%B1%E3%80%81%E5%85%8D%E8%B4%B9%E7%9F%AD%E4%BF%A1%E6%8E%A5%E7%A0%81%E5%B9%B3%E5%8F%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="漏洞大总结1-SQL注入">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="匿名邮箱、临时邮箱、短信平台">
                         
-                        <span class="card-title">漏洞大总结1-SQL注入</span>
+                        <span class="card-title">匿名邮箱、临时邮箱、短信平台</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1016,12 +972,12 @@ fr <span class="token operator">=</span> decode1<span class="token punctuation">
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-30
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-21
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            诚默
+                            k3vi
                             
                         </span>
                     </div>
@@ -1029,8 +985,8 @@ fr <span class="token operator">=</span> decode1<span class="token punctuation">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%BC%8F%E6%B4%9E/">
-                        <span class="chip bg-color">漏洞</span>
+                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">工具</span>
                     </a>
                     
                 </div>
@@ -1044,13 +1000,13 @@ fr <span class="token operator">=</span> decode1<span class="token punctuation">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/05/12/mac%E4%B8%8B%E5%AE%89%E8%A3%85frida%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+                <a href="/2020/02/22/cnvd-2020-10487%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%8F%8Apoc/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="mac下安装frida报错解决方法">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="CNVD-2020-10487漏洞利用及POC">
                         
-                        <span class="card-title">mac下安装frida报错解决方法</span>
+                        <span class="card-title">CNVD-2020-10487漏洞利用及POC</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1061,7 +1017,7 @@ fr <span class="token operator">=</span> decode1<span class="token punctuation">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-22
                             </span>
                         <span class="publish-author">
                             
@@ -1070,6 +1026,18 @@ fr <span class="token operator">=</span> decode1<span class="token punctuation">
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/poc/">
+                        <span class="chip bg-color">poc</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%BC%8F%E6%B4%9E/">
+                        <span class="chip bg-color">漏洞</span>
+                    </a>
+                    
                 </div>
                 
             </div>
