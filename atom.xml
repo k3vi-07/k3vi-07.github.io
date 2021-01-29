@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ex1t</title>
+  
+  <subtitle>脚踏实地，走出我们的精彩</subtitle>
+  <link href="https://www.ex1t.xyz/atom.xml" rel="self"/>
+  
+  <link href="https://www.ex1t.xyz/"/>
+  <updated>2021-01-25T02:09:26.945Z</updated>
+  <id>https://www.ex1t.xyz/</id>
+  
+  <author>
+    <name>Ex1t</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用ELK搭建密码统计库</title>
+    <link href="https://www.ex1t.xyz/2021/01/25/%E4%BD%BF%E7%94%A8elk%E6%90%AD%E5%BB%BA%E5%AF%86%E7%A0%81%E7%BB%9F%E8%AE%A1%E5%BA%93/"/>
+    <id>https://www.ex1t.xyz/2021/01/25/%E4%BD%BF%E7%94%A8elk%E6%90%AD%E5%BB%BA%E5%AF%86%E7%A0%81%E7%BB%9F%E8%AE%A1%E5%BA%93/</id>
+    <published>2021-01-25T02:05:22.000Z</published>
+    <updated>2021-01-25T02:09:26.945Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;使用elk搭建密码top统计库&quot;&gt;&lt;a href=&quot;#使用elk搭建密码top统计库&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="elk" scheme="https://www.ex1t.xyz/tags/elk/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用python获取ip地址归属地</title>
+    <link href="https://www.ex1t.xyz/2020/12/26/%E4%BD%BF%E7%94%A8python%E8%8E%B7%E5%8F%96ip%E5%9C%B0%E5%9D%80%E5%BD%92%E5%B1%9E%E5%9C%B0/"/>
+    <id>https://www.ex1t.xyz/2020/12/26/%E4%BD%BF%E7%94%A8python%E8%8E%B7%E5%8F%96ip%E5%9C%B0%E5%9D%80%E5%BD%92%E5%B1%9E%E5%9C%B0/</id>
+    <published>2020-12-26T08:40:05.000Z</published>
+    <updated>2020-12-26T08:41:06.658Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;ip地址归属&quot;&gt;&lt;a href=&quot;#ip地址归属&quot; class=&quot;headerlink&quot; title=&quot;ip地址归属&quot;&gt;&lt;/a&gt;ip地址归属&lt;/h1&gt;&lt;p&gt;使用geoip的ip地址库&lt;/p&gt;
+&lt;pre class=&quot;line-numbers</summary>
+        
+      
+    
+    
+    
+    
+    <category term="python" scheme="https://www.ex1t.xyz/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CVE-2020-1488214883复现</title>
+    <link href="https://www.ex1t.xyz/2020/12/03/cve-2020-1488214883%E5%A4%8D%E7%8E%B0/"/>
+    <id>https://www.ex1t.xyz/2020/12/03/cve-2020-1488214883%E5%A4%8D%E7%8E%B0/</id>
+    <published>2020-12-03T07:29:00.000Z</published>
+    <updated>2020-12-30T10:43:33.880Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;http://img.ex1t.xyz/20201230173056.jpg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+    <category term="漏洞" scheme="https://www.ex1t.xyz/tags/%E6%BC%8F%E6%B4%9E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>KALI2020.4 安装pd tools 报错解决</title>
+    <link href="https://www.ex1t.xyz/2020/12/02/kali2020-4-%E5%AE%89%E8%A3%85pd-tools-%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/"/>
+    <id>https://www.ex1t.xyz/2020/12/02/kali2020-4-%E5%AE%89%E8%A3%85pd-tools-%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/</id>
+    <published>2020-12-02T06:19:00.000Z</published>
+    <updated>2020-12-30T10:43:33.880Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;不是翻译&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt; I managed to get Parallels Tools working today on my freshly updated Kali system by following the steps at &lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="kali" scheme="https://www.ex1t.xyz/tags/kali/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>几个渗透工具的简单使用</title>
+    <link href="https://www.ex1t.xyz/2020/09/14/%E5%87%A0%E4%B8%AA%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
+    <id>https://www.ex1t.xyz/2020/09/14/%E5%87%A0%E4%B8%AA%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-09-14T08:27:00.000Z</published>
+    <updated>2021-01-03T22:46:28.117Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;http://img.ex1t.xyz/20201230173056.jpg&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1、Metasploit&quot;&gt;&lt;a href=&quot;#1、Metasploit&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="工具" scheme="https://www.ex1t.xyz/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>等保测评之安全物理环境、安全管理</title>
+    <link href="https://www.ex1t.xyz/2020/08/27/%E7%AD%89%E4%BF%9D%E6%B5%8B%E8%AF%84%E4%B9%8B%E5%AE%89%E5%85%A8%E7%89%A9%E7%90%86%E7%8E%AF%E5%A2%83%E3%80%81%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86/"/>
+    <id>https://www.ex1t.xyz/2020/08/27/%E7%AD%89%E4%BF%9D%E6%B5%8B%E8%AF%84%E4%B9%8B%E5%AE%89%E5%85%A8%E7%89%A9%E7%90%86%E7%8E%AF%E5%A2%83%E3%80%81%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86/</id>
+    <published>2020-08-27T08:17:00.000Z</published>
+    <updated>2020-12-30T10:43:33.884Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://www.ex1t.xyz/wp-content/uploads/2020/08/u38794416892821884868fm26gp0-300x207.jpg&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;测评方法&quot;&gt;&lt;a href=&quot;#测评方法&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="等保测评" scheme="https://www.ex1t.xyz/tags/%E7%AD%89%E4%BF%9D%E6%B5%8B%E8%AF%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql数据库学习笔记之数据库及MySQL基础</title>
+    <link href="https://www.ex1t.xyz/2020/08/27/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8Asql%E5%9F%BA%E7%A1%80/"/>
+    <id>https://www.ex1t.xyz/2020/08/27/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8Asql%E5%9F%BA%E7%A1%80/</id>
+    <published>2020-08-27T06:24:00.000Z</published>
+    <updated>2020-12-30T10:43:33.881Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;%22http://img.ex1t.xyz/20201230175643.jpg%22&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;数据库及SQL-MySQL基础&quot;&gt;&lt;a href=&quot;#数据库及SQL-MySQL基础&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="mysql" scheme="https://www.ex1t.xyz/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>漏洞大总结1-SQL注入</title>
+    <link href="https://www.ex1t.xyz/2020/07/30/%E6%BC%8F%E6%B4%9E%E5%A4%A7%E6%80%BB%E7%BB%931-sql%E6%B3%A8%E5%85%A5/"/>
+    <id>https://www.ex1t.xyz/2020/07/30/%E6%BC%8F%E6%B4%9E%E5%A4%A7%E6%80%BB%E7%BB%931-sql%E6%B3%A8%E5%85%A5/</id>
+    <published>2020-07-30T02:23:00.000Z</published>
+    <updated>2020-12-30T10:43:33.883Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;http://img.ex1t.xyz/20201230173056.jpg&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;漏洞大总结1-SQL注入——-诚默&quot;&gt;&lt;a href=&quot;#漏洞大总结1-SQL注入——-诚默&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="漏洞" scheme="https://www.ex1t.xyz/tags/%E6%BC%8F%E6%B4%9E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一题python加密题</title>
+    <link href="https://www.ex1t.xyz/2020/07/08/%E4%B8%80%E9%A2%98python%E5%8A%A0%E5%AF%86%E9%A2%98/"/>
+    <id>https://www.ex1t.xyz/2020/07/08/%E4%B8%80%E9%A2%98python%E5%8A%A0%E5%AF%86%E9%A2%98/</id>
+    <published>2020-07-08T02:49:00.000Z</published>
+    <updated>2020-12-30T10:43:33.883Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;http://img.ex1t.xyz/20200708115429.jpeg&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;之前做ctf过程中遇到了一个使用python写写的加密程序.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    
+    <category term="python" scheme="https://www.ex1t.xyz/tags/python/"/>
+    
+    <category term="Ctf" scheme="https://www.ex1t.xyz/tags/ctf/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mac下安装frida报错解决方法</title>
+    <link href="https://www.ex1t.xyz/2020/05/12/mac%E4%B8%8B%E5%AE%89%E8%A3%85frida%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>https://www.ex1t.xyz/2020/05/12/mac%E4%B8%8B%E5%AE%89%E8%A3%85frida%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
+    <published>2020-05-12T05:09:00.000Z</published>
+    <updated>2020-12-30T10:43:33.881Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;mac下安装frida报错解决方法&quot;&gt;&lt;a href=&quot;#mac下安装frida报错解决方法&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>常见漏洞描述</title>
+    <link href="https://www.ex1t.xyz/2020/05/09/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E7%AE%80%E8%BF%B0/"/>
+    <id>https://www.ex1t.xyz/2020/05/09/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E7%AE%80%E8%BF%B0/</id>
+    <published>2020-05-09T02:49:00.000Z</published>
+    <updated>2020-12-30T10:43:33.884Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;http://img.ex1t.xyz/20201230173056.jpg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;漏洞主要分为XSS注入、SQL注入、服务漏洞、文件上传、命令执行、文件包含、csrf、ssrf、反序列化等&lt;/p&gt;
+&lt;h5 id=&quot;（1）XSS注入&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="漏洞" scheme="https://www.ex1t.xyz/tags/%E6%BC%8F%E6%B4%9E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>匿名邮箱、临时邮箱、短信平台</title>
+    <link href="https://www.ex1t.xyz/2020/04/21/%E5%8C%BF%E5%90%8D%E9%82%AE%E7%AE%B1%E3%80%81%E5%85%8D%E8%B4%B9%E4%B8%B4%E6%97%B6%E9%82%AE%E7%AE%B1%E3%80%81%E5%85%8D%E8%B4%B9%E7%9F%AD%E4%BF%A1%E6%8E%A5%E7%A0%81%E5%B9%B3%E5%8F%B0/"/>
+    <id>https://www.ex1t.xyz/2020/04/21/%E5%8C%BF%E5%90%8D%E9%82%AE%E7%AE%B1%E3%80%81%E5%85%8D%E8%B4%B9%E4%B8%B4%E6%97%B6%E9%82%AE%E7%AE%B1%E3%80%81%E5%85%8D%E8%B4%B9%E7%9F%AD%E4%BF%A1%E6%8E%A5%E7%A0%81%E5%B9%B3%E5%8F%B0/</id>
+    <published>2020-04-21T08:51:00.000Z</published>
+    <updated>2021-01-03T23:02:27.725Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;匿名邮箱、临时邮箱、短信平台&quot;&gt;&lt;a href=&quot;#匿名邮箱、临时邮箱、短信平台&quot; class=&quot;headerlink&quot; title=&quot;匿名邮箱、临时邮箱、短信平台&quot;&gt;&lt;/a&gt;匿名邮箱、临时邮箱、短信平台&lt;/h1&gt;&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+    <category term="工具" scheme="https://www.ex1t.xyz/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在windows10-wsl下以图形化运行kali-linux</title>
+    <link href="https://www.ex1t.xyz/2020/03/10/%E5%9C%A8windows10-wsl%E4%B8%8B%E4%BB%A5%E5%9B%BE%E5%BD%A2%E5%8C%96%E8%BF%90%E8%A1%8Ckali-linux/"/>
+    <id>https://www.ex1t.xyz/2020/03/10/%E5%9C%A8windows10-wsl%E4%B8%8B%E4%BB%A5%E5%9B%BE%E5%BD%A2%E5%8C%96%E8%BF%90%E8%A1%8Ckali-linux/</id>
+    <published>2020-03-10T05:59:00.000Z</published>
+    <updated>2021-01-03T23:00:53.083Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;要想在Windows下不使用虚拟机运行Linux，首先需要了解的知识点是到底wsl和xfce是什么东西&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;什么是wsl&quot;&gt;&lt;a href=&quot;#什么是wsl&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="kali" scheme="https://www.ex1t.xyz/tags/kali/"/>
+    
+    <category term="wsl" scheme="https://www.ex1t.xyz/tags/wsl/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CNVD-2020-10487漏洞利用及POC</title>
+    <link href="https://www.ex1t.xyz/2020/02/22/cnvd-2020-10487%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%8F%8Apoc/"/>
+    <id>https://www.ex1t.xyz/2020/02/22/cnvd-2020-10487%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%8F%8Apoc/</id>
+    <published>2020-02-22T12:56:00.000Z</published>
+    <updated>2020-12-30T10:43:33.880Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;TOMCAT-简介&quot;&gt;&lt;a href=&quot;#TOMCAT-简介&quot; class=&quot;headerlink&quot; title=&quot;TOMCAT 简介&quot;&gt;&lt;/a&gt;TOMCAT 简介&lt;/h3&gt;&lt;p&gt;Apache Tomcat 是一个免费的开源 Web</summary>
+        
+      
+    
+    
+    
+    
+    <category term="poc" scheme="https://www.ex1t.xyz/tags/poc/"/>
+    
+    <category term="漏洞" scheme="https://www.ex1t.xyz/tags/%E6%BC%8F%E6%B4%9E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在VMware 15下安装kali 2019.4，并进行相关配置配置</title>
+    <link href="https://www.ex1t.xyz/2020/02/18/%E5%9C%A8vmware-15%E4%B8%8B%E5%AE%89%E8%A3%85kali-2019-4%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE%E9%85%8D%E7%BD%AE/"/>
+    <id>https://www.ex1t.xyz/2020/02/18/%E5%9C%A8vmware-15%E4%B8%8B%E5%AE%89%E8%A3%85kali-2019-4%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE%E9%85%8D%E7%BD%AE/</id>
+    <published>2020-02-18T01:03:00.000Z</published>
+    <updated>2020-12-30T10:43:33.882Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;在VMware 15下安装kali 2019.4，并进行相关配置，安装vmware-tools、配置国内源、进行更新&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="kali" scheme="https://www.ex1t.xyz/tags/kali/"/>
+    
+    <category term="Vmware" scheme="https://www.ex1t.xyz/tags/vmware/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python3利用API查询天气及地理信息</title>
+    <link href="https://www.ex1t.xyz/2020/01/17/python3%E5%88%A9%E7%94%A8api%E6%9F%A5%E8%AF%A2%E5%A4%A9%E6%B0%94%E5%8F%8A%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF/"/>
+    <id>https://www.ex1t.xyz/2020/01/17/python3%E5%88%A9%E7%94%A8api%E6%9F%A5%E8%AF%A2%E5%A4%A9%E6%B0%94%E5%8F%8A%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF/</id>
+    <published>2020-01-17T05:45:00.000Z</published>
+    <updated>2020-12-30T10:43:33.881Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;  在学习python的过程中，看到利用api接口的练习，就写了这么一个功能模块，可以通过ip地址/城市名称/城市标识ID/auto_ip等查询天气和地理信息。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;API-amp-KEY&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="python" scheme="https://www.ex1t.xyz/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在 Mac OS 下一根线玩转树莓派 zero w</title>
+    <link href="https://www.ex1t.xyz/2020/01/14/%E5%9C%A8-mac-os-%E4%B8%8B%E4%B8%80%E6%A0%B9%E7%BA%BF%E7%8E%A9%E8%BD%AC%E6%A0%91%E8%8E%93%E6%B4%BE-zero-w/"/>
+    <id>https://www.ex1t.xyz/2020/01/14/%E5%9C%A8-mac-os-%E4%B8%8B%E4%B8%80%E6%A0%B9%E7%BA%BF%E7%8E%A9%E8%BD%AC%E6%A0%91%E8%8E%93%E6%B4%BE-zero-w/</id>
+    <published>2020-01-14T08:01:00.000Z</published>
+    <updated>2020-12-30T10:43:33.882Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;http://img.ex1t.xyz/20201230165431.png&quot;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在树莓派官网下载下载完整版 Raspbian Jessie 或 Raspbian Jessie Lite 系统，使用 etcher 刻录到</summary>
+        
+      
+    
+    
+    
+    
+    <category term="树莓派" scheme="https://www.ex1t.xyz/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Debian linux的图形界面和文本界面的切换</title>
+    <link href="https://www.ex1t.xyz/2020/01/14/debian-linux%E7%9A%84%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%92%8C%E6%96%87%E6%9C%AC%E7%95%8C%E9%9D%A2%E7%9A%84%E5%88%87%E6%8D%A2/"/>
+    <id>https://www.ex1t.xyz/2020/01/14/debian-linux%E7%9A%84%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%92%8C%E6%96%87%E6%9C%AC%E7%95%8C%E9%9D%A2%E7%9A%84%E5%88%87%E6%8D%A2/</id>
+    <published>2020-01-14T07:53:00.000Z</published>
+    <updated>2020-12-30T10:43:33.880Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Debian-linux的图形界面和文本界面的切换&quot;&gt;&lt;a href=&quot;#Debian-linux的图形界面和文本界面的切换&quot; class=&quot;headerlink&quot; title=&quot;Debian linux的图形界面和文本界面的切换&quot;&gt;&lt;/a&gt;Debian</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Linux" scheme="https://www.ex1t.xyz/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>复习-网络基础部分</title>
+    <link href="https://www.ex1t.xyz/2020/01/10/%E5%A4%8D%E4%B9%A0-%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/"/>
+    <id>https://www.ex1t.xyz/2020/01/10/%E5%A4%8D%E4%B9%A0-%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/</id>
+    <published>2020-01-10T05:21:00.000Z</published>
+    <updated>2020-12-30T10:43:33.883Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;http://img.ex1t.xyz/20201230173056.jpg&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1、什么是网络&quot;&gt;&lt;a href=&quot;#1、什么是网络&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="网络基础" scheme="https://www.ex1t.xyz/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用python生成IP地址</title>
+    <link href="https://www.ex1t.xyz/2019/12/26/%E4%BD%BF%E7%94%A8python%E7%94%9F%E6%88%90ip%E5%9C%B0%E5%9D%80/"/>
+    <id>https://www.ex1t.xyz/2019/12/26/%E4%BD%BF%E7%94%A8python%E7%94%9F%E6%88%90ip%E5%9C%B0%E5%9D%80/</id>
+    <published>2019-12-26T08:39:06.000Z</published>
+    <updated>2020-12-26T08:39:35.146Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;IP地址生成&quot;&gt;&lt;a href=&quot;#IP地址生成&quot; class=&quot;headerlink&quot; title=&quot;IP地址生成&quot;&gt;&lt;/a&gt;IP地址生成&lt;/h1&gt;&lt;pre class=&quot;line-numbers language-python&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="python" scheme="https://www.ex1t.xyz/tags/python/"/>
+    
+  </entry>
+  
+</feed>
