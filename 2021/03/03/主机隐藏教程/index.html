@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="mac下安装frida报错解决方法">
+    <meta name="keywords" content="Cobalt Strike 主机隐藏教程, Ex1t">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>mac下安装frida报错解决方法 | Ex1t</title>
+    <title>Cobalt Strike 主机隐藏教程 | Ex1t</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -241,12 +241,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">mac下安装frida报错解决方法</h1>
+                    <h1 class="description center-align post-title">Cobalt Strike 主机隐藏教程</h1>
                 </div>
             </div>
         </div>
@@ -360,9 +360,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/cobaltstrike/">
+                                <span class="chip bg-color">cobaltstrike</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -374,7 +378,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-12
+                    2021-03-03
                 </div>
                 
 
@@ -383,14 +387,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    40
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    9 分
                 </div>
                 
 
@@ -418,13 +422,132 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="mac下安装frida报错解决方法"><a href="#mac下安装frida报错解决方法" class="headerlink" title="mac下安装frida报错解决方法"></a>mac下安装frida报错解决方法</h1><p>报错截图</p>
-<p><img src="http://img.ex1t.xyz/20200512130536.png" alt="image-20200512130533292"></p>
-<p>ssl的原因解决方法</p>
-<p><code>sudo /Applications/Python\ 3.7/Install\ Certificates.command</code></p>
-<p><img src="http://img.ex1t.xyz/20200512130756.png" alt="image-20200512130753246"></p>
-<p>之后执行安装就可以了</p>
-<p><img src="http://img.ex1t.xyz/20200512130825.png" alt="image-20200512130823453"></p>
+                <h1 id="Cobalt-Strike-主机隐藏"><a href="#Cobalt-Strike-主机隐藏" class="headerlink" title="Cobalt Strike 主机隐藏"></a>Cobalt Strike 主机隐藏</h1><blockquote>
+<p> 根据现有检测机制，来对服务器进行隐藏，减少c2服务器被检测到的几率。文章最初发表在freebuf  <a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/network/262445.html">https://www.freebuf.com/articles/network/262445.html</a></p>
+</blockquote>
+<p>CDN：cloudflare<br>服务器：阿里云香港 debian10 amd64<br>证书：let’s encrypt 免费证书<br>域名：dot.tk免费域名<br>CS：CobaltStrike 4.2</p>
+<hr>
+<h2 id="1、-CS服务端配置"><a href="#1、-CS服务端配置" class="headerlink" title="1、 CS服务端配置"></a>1、 CS服务端配置</h2><p>上传CS到服务器，配置java坏境等步骤略。<br>需要做的操作分别为：禁ping、修改默认端口、修改客户端连接证书。</p>
+<h3 id="1-1-服务器禁ping"><a href="#1-1-服务器禁ping" class="headerlink" title="1.1 服务器禁ping"></a>1.1 服务器禁ping</h3><p>当服务器禁ping后，从某种角度可以判定为主机为不存活状态。</p>
+<h4 id="1-1-1-修改系统配置。"><a href="#1-1-1-修改系统配置。" class="headerlink" title="1.1.1 修改系统配置。"></a>1.1.1 修改系统配置。</h4><p>编辑文件/etc/sysctl.conf，在里面增加一行。<br>    <code>net.ipv4.icmp_echo_ignore_all=1</code><br>之后使命命令<code>sysctl -p</code>使配置生效<br><img src="http://img.ex1t.xyz/mweb/16109390202253.jpg" alt="-w504"><br>之后在ping就无法ping通了。<br>这种方式nmap还是可以扫描到服务器的存活的。</p>
+<h4 id="1-1-2-云服务器防火墙（安全组）"><a href="#1-1-2-云服务器防火墙（安全组）" class="headerlink" title="1.1.2 云服务器防火墙（安全组）"></a>1.1.2 云服务器防火墙（安全组）</h4><p>使用云服务器防火墙的方式可以更好的控制流量不流向云服务器本身。从外层入口阻断流量。<br>前提是需要你的服务器为ecs服务器，不能我这种轻量级主机。具体的操作这里就不记录操作了。毕竟我也没有这样还样的服务器。</p>
+<h3 id="1-2-修改端口"><a href="#1-2-修改端口" class="headerlink" title="1.2 修改端口"></a>1.2 修改端口</h3><p>编辑teamserver文件，搜索50050，将其改为任意端口即可，这里改成53389。<br><img src="http://img.ex1t.xyz/mweb/16109347913120.jpg" alt="-w684"><br>保存退出再次启动时端口就变化了。<img src="http://img.ex1t.xyz/mweb/16109349336303.jpg" alt="-w391"></p>
+<hr>
+<h3 id="1-3-修改默认证书"><a href="#1-3-修改默认证书" class="headerlink" title="1.3 修改默认证书"></a>1.3 修改默认证书</h3><p>因为cs服务端生成的证书含有cs的相关特征所有，这里进行修改替换。修改方式有两种，分别为生成密钥库和修改启动文件。无论是那种方式都需要删去原有的文件cobaltstrike.store</p>
+<h4 id="1-3-1-方法一生成证书"><a href="#1-3-1-方法一生成证书" class="headerlink" title="1.3.1 方法一生成证书"></a>1.3.1 方法一生成证书</h4><ol>
+<li>删除密钥库文件cobaltstrike.store</li>
+<li>使用命令<code>keytool -keystore ./cobaltstrike.store -storepass 123456 -keypass 123456 -genkey -keyalg RSA -alias baidu -dname "CN=baidu.com, OU=service operation department, O=Beijing Baidu Netcom Science Technology Co.\, Ltd, L=beijing, S=beijing, C=CN"</code>可以生成新的密钥库文件</li>
+<li>使用命令<code>keytool -list -keystore cobaltstrike.store </code>查看证书<img src="http://img.ex1t.xyz/mweb/16109367247422.jpg" alt="-w681"></li>
+<li>启动服务器查看证书签名是否相同。<img src="http://img.ex1t.xyz/mweb/16109367827463.jpg" alt="-w695"></li>
+</ol>
+<h4 id="1-3-2-方法二修改文件"><a href="#1-3-2-方法二修改文件" class="headerlink" title="1.3.2 方法二修改文件"></a>1.3.2 方法二修改文件</h4><p>teamserver 是启动cs服务端的启动文件。里面有环境检测的部分，其中就包括密钥库的检测，这部分的写法是，如检测不到密钥库就使用命令生成新的密钥库，修改这里生成命令。<img src="http://img.ex1t.xyz/mweb/16109370660983.jpg" alt="-w690"></p>
+<p>将其改为<code>keytool -keystore ./cobaltstrike.store -storepass 123456 -keypass 123456 -genkey -keyalg RSA -alias baidu.com -dname "CN=baidu.com, OU=service operation department, O=Beijing Baidu Netcom Science Technology Co.\, Ltd, L=Beijing, S=Beijing, C=CN"</code><br>删除原有的./cobaltstrike.store密钥库文件，下次启动时会自动生成新的密钥库文件。<br>这个密钥库也可以使用下面通过cloudflare申请的密钥库代理。</p>
+<h2 id="2、使用CDN隐藏"><a href="#2、使用CDN隐藏" class="headerlink" title="2、使用CDN隐藏"></a>2、使用CDN隐藏</h2><p>cs生成的木马中会带有服务器的部分信息如IP、域名，使用cdn就可以很好的隐藏住这部分信息，并且在一定程度上可以规避杀毒软件的主机特征查杀。并且在其他大佬的文章中看到https的监听方式中不会采用cobaltstrike.store的密钥库。所以这里申请一个证书代替https监听方式中的默认证书。</p>
+<h3 id="2-1-申请免费域名"><a href="#2-1-申请免费域名" class="headerlink" title="2.1 申请免费域名"></a>2.1 申请免费域名</h3><p>使用免费域名的好处是不会有过多的信息记录下来。<br>访问<a target="_blank" rel="noopener" href="https://www.freenom.com/zh/index.html%E6%B3%A8%E5%86%8C%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%85%8D%E8%B4%B9%E4%BD%BF%E7%94%A8%E4%B8%80%E5%B9%B4%E3%80%82%E5%85%B7%E4%BD%93%E6%B3%A8%E5%86%8C%E7%96%91%E9%97%AE%E5%8F%AF%E4%BB%A5%E5%8F%82%E8%80%83%E7%9F%A5%E4%B9%8E%E6%96%87%E7%AB%A0">https://www.freenom.com/zh/index.html注册，可以免费使用一年。具体注册疑问可以参考知乎文章</a> <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/115535965">https://zhuanlan.zhihu.com/p/115535965</a><br><img src="http://img.ex1t.xyz/mweb/16106121048138.jpg" alt="-w831"></p>
+<p>选择时长，免费12个月<br><img src="http://img.ex1t.xyz/mweb/16106128775105.jpg" alt="-w1276"><br>注册成功<br><img src="http://img.ex1t.xyz/mweb/16106129076708.jpg" alt="-w705"></p>
+<p>这里我们用域名dotdotdotdot.tk做演示，演示结束后一段时间后删除域名。</p>
+<h3 id="2-2-CDN配置"><a href="#2-2-CDN配置" class="headerlink" title="2.2 CDN配置"></a>2.2 CDN配置</h3><p>cdn部分可以选择其实挺多的，这里选择的是cloudflare。<br>1、注册账号<br>2、添加站点、选择免费计划、之后会扫描dns记录<br><img src="http://img.ex1t.xyz/mweb/16106133694928.jpg" alt="-w1129"><br><img src="http://img.ex1t.xyz/mweb/16106134063677.jpg" alt="-w986"><br>3、修改dotdotdotdot.tk的dns服务器为cloudflare。修改完成后需要一定的时间生效<br><img src="http://img.ex1t.xyz/mweb/16106134518009.jpg" alt="-w920"><br><img src="http://img.ex1t.xyz/mweb/16106134939519.jpg" alt="-w754"><br><img src="http://img.ex1t.xyz/mweb/16106135325993.jpg" alt="-w801"><br>4、关闭自动https重写和始终使用https、broti压缩<br>5、出现如下界面就设置生效，可以使用cloudflare进行域名解析操作了。<br><img src="http://img.ex1t.xyz/mweb/16106137836177.jpg" alt="-w787"><br>6、解析一个baidu.dotdotdotdot.tk测试一下。<br><img src="http://img.ex1t.xyz/mweb/16106139605510.jpg" alt="-w1083"><br><img src="http://img.ex1t.xyz/mweb/16106139777840.jpg" alt="-w568"><br>7、解析域名到你的vps上，配置如下。代理状态为已代理，这样所有的流量会流经cdn。<br><img src="http://img.ex1t.xyz/mweb/16109402367733.jpg" alt="-w806"></p>
+<p><code>ping baidubaidu.dotdotdotdot.tk</code> 此时CDN已经生效<br><img src="http://img.ex1t.xyz/mweb/16109402057755.jpg" alt="-w550"><br>8、配置SSL/TLS加密模式为完全<br><img src="http://img.ex1t.xyz/mweb/16112001394146.jpg" alt="-w1200"></p>
+<h3 id="2-3-cloudflare生成证书"><a href="#2-3-cloudflare生成证书" class="headerlink" title="2.3 cloudflare生成证书"></a>2.3 cloudflare生成证书</h3><p>在cloudflare的dash页面找到SSL/TLS-&gt;源服务器-&gt;创建证书，之后将公钥和私钥保存下来，分别为server.pem和server.key。一定要在生成的时候保存，不然可能找不到私钥了。</p>
+<h4 id="2-3-1-申请证书并打包密钥库"><a href="#2-3-1-申请证书并打包密钥库" class="headerlink" title="2.3.1 申请证书并打包密钥库"></a>2.3.1 申请证书并打包密钥库</h4><p>将证书打包并生成store文件<br><code>openssl pkcs12 -export -in server.pem -inkey server.key -out baidubaidu.dotdotdotdot.tk.p12 -name baidubaidu.dotdotdotdot.tk -passout pass:123456</code><br><code>keytool -importkeystore -deststorepass 123456 -destkeypass 123456 -destkeystore baidubaidu.dotdotdotdot.tk.store -srckeystore baidubaidu.dotdotdotdot.tk.p12 -srcstoretype PKCS12 -srcstorepass 123456 -alias baidubaidu.dotdotdotdot.tk</code></p>
+<h3 id="2-4-配置证书到https的监听方式中。"><a href="#2-4-配置证书到https的监听方式中。" class="headerlink" title="2.4 配置证书到https的监听方式中。"></a>2.4 配置证书到https的监听方式中。</h3><p>要想使用我们自己申请的证书，这里就需要使用‘Malleable C2 profile’的方式来操作。这里以cloudflare.profile为例。将生成的密钥文件.store放到cs目录下，想cloudflare.profile加入证书配置：<br>其中需要注意的是https-certificate为证书相关的配置，其他client.header中Host的值要为我们申请的域名，其他的部分，根据个人情况去配置。</p>
+<pre class="line-numbers language-none"><code class="language-none">https-certificate {
+    set keystore "baidubaidu.dotdotdotdot.tk.store";
+    set password "123456";
+}
+http-stager {
+    set uri_x86 "/api/1";
+    set uri_x64 "/api/2";
+    client {
+        header "Host" "baidubaidu.dotdotdotdot.tk";}
+    server {
+        output{
+        print;
+        }
+    }
+        }
+http-get {
+    set uri "/api/3";
+    client {
+        header "Host" "baidubaidu.dotdotdotdot.tk";
+        metadata {
+            base64;
+            header "Cookie";
+        }
+        }
+    server {
+        output{
+        print;
+        }
+    }
+        }
+http-post {
+    set uri "/api/4";
+    client {
+        header "Host" "baidubaidu.dotdotdotdot.tk";
+        id {
+            uri-append;
+        }
+        output{
+        print;
+        }
+    }
+    server {
+        output{
+        print;
+        }
+    }
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使用命令”./c2lint cloudflare.profile”去验证配置文件是否有问题。如下为验证成功的配置。<br><img src="http://img.ex1t.xyz/mweb/16109502195826.jpg" alt="-w687"><br>验证配置失败，会爆出如下错误，根据报错结果去修改你的配置文件。配置文件参考官方<a target="_blank" rel="noopener" href="https://www.cobaltstrike.com/help-malleable-c2">帮助文件</a><br><img src="http://img.ex1t.xyz/mweb/16109503273723.jpg" alt="-w484"><br>使用配置文件启动服务器<br><code>./teamserver 172.17.21.142  123456 cloudflare.profile</code><br><img src="http://img.ex1t.xyz/mweb/16109504528136.jpg" alt="-w501"></p>
+<h3 id="2-5-配置文件生成仓库"><a href="#2-5-配置文件生成仓库" class="headerlink" title="2.5 配置文件生成仓库"></a>2.5 配置文件生成仓库</h3><p>github上有一个仓库，可以用于生成c2配置文件，如果使用此种方式需要在木马生成部分的备注，不然可能会导致木马无法上线。<br>使用方式：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#安装命令</span>
+<span class="token function">git</span> clone https://github.com/FortyNorthSecurity/C2concealer <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> C2concealer <span class="token operator">&amp;&amp;</span> <span class="token function">chmod</span> +x install.sh <span class="token operator">&amp;&amp;</span> ./install.sh
+<span class="token comment">#使用命令</span>
+C2concealer --variant <span class="token number">1</span> --hostname <span class="token string">"baidubaidu.dotdotdotdot.tk"</span>
+<span class="token comment">#域名记得加引号</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>baidu.store就是baidubaidu.dotdotdotdot.tk.store为了方便就改了文件名。<br><img src="http://img.ex1t.xyz/mweb/16111124525618.jpg" alt="-w882"><br>之后使用生成后的profile文件启动服务器即可</p>
+<h3 id="2-6-生成木马配置"><a href="#2-6-生成木马配置" class="headerlink" title="2.6 生成木马配置"></a>2.6 生成木马配置</h3><p>作了如上的配置，在生成木马时需要做一些不一样的操作。<br><strong>注意：</strong> 免费版本的cloudflare支持解析少量的端口，具体端口如下<br><strong>http:</strong><br>    80、8080、8880、2052、2082、2086、2095<br><strong>https:</strong><br>    443、2053、2083、2087、2096、8443<br><img src="http://img.ex1t.xyz/mweb/16111125070170.jpg" alt="-w491"><br>之后生成木马，运行即可上线<br><img src="http://img.ex1t.xyz/mweb/16111125789335.jpg" alt="-w390"></p>
+<p><img src="http://img.ex1t.xyz/mweb/16111125618380.jpg" alt="-w778"></p>
+<p>powershell的上线方式与以前有些许不同。需要启动ssl证书。<br><img src="http://img.ex1t.xyz/mweb/16111126535204.jpg" alt="-w406"></p>
+<p>备注：如果使用C2concealer生成profile，需要配置listener时在profile中选择variant_1才行，不然可能会导致无法上线。<br><img src="http://img.ex1t.xyz/mweb/16112097666001.jpg" alt="-w468"></p>
+<h2 id="3、写在最后"><a href="#3、写在最后" class="headerlink" title="3、写在最后"></a>3、写在最后</h2><p>1、服务器防火墙，c2上线端口只能让cdn的IP访问，这样可以避免被扫描器扫描到，将你的IP加入威胁情报中去。具体配置可以在云服务器安全组操作。或者在服务器使用iptables操作。<br>2、证书申请这部分我走了很多的弯路，之前打算使用let’s Encrypt后来发现无论怎么操作都无法上线，<br>3、实际上这些操作都是服务器本身的隐藏，要想更好的使用CobaltStrike可能还需要做免杀，做木马文件签名等操作。<br>4、这些配置做完后，及时服务器不在继续使用，也可以将文件打包拷贝到新服务器中，后面只需更新DNS解析即可。</p>
+<h3 id="cloudflare-使用的IP段"><a href="#cloudflare-使用的IP段" class="headerlink" title="cloudflare 使用的IP段"></a>cloudflare 使用的IP段</h3><p>全部IP段</p>
+<pre class="line-numbers language-none"><code class="language-none">173.245.48.0/20
+103.21.244.0/22
+103.22.200.0/22
+103.31.4.0/22
+141.101.64.0/18
+108.162.192.0/18
+190.93.240.0/20
+188.114.96.0/20
+197.234.240.0/22
+198.41.128.0/17
+162.158.0.0/15
+104.16.0.0/12
+172.64.0.0/13
+131.0.72.0/22<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>国内IP段是cloudflare与百度云合作的节点</p>
+<pre class="line-numbers language-none"><code class="language-none">162.159.211.4-103
+103.21.244.0/22
+103.22.200.0/22
+103.31.4.0/22
+104.16.0.0/12
+108.162.192.0/18
+131.0.72.0/22
+141.101.64.0/18
+162.158.0.0/15
+172.64.0.0/13
+173.245.48.0/20
+188.114.96.0/20
+190.93.240.0/20
+197.234.240.0/22
+198.41.128.0/17<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/god_zzZ/article/details/109057803">https://blog.csdn.net/god_zzZ/article/details/109057803</a></li>
+<li><a target="_blank" rel="noopener" href="https://hosch3n.github.io/2020/12/16/%E6%A3%80%E6%B5%8B%E4%B8%8E%E9%9A%90%E8%97%8FCobaltstrike%E6%9C%8D%E5%8A%A1%E5%99%A8/">https://hosch3n.github.io/2020/12/16/%E6%A3%80%E6%B5%8B%E4%B8%8E%E9%9A%90%E8%97%8FCobaltstrike%E6%9C%8D%E5%8A%A1%E5%99%A8/</a></li>
+<li><a target="_blank" rel="noopener" href="https://support.cloudflare.com/hc/en-us/articles/200169156-Identifying-network-ports-compatible-with-Cloudflare-s-proxy">https://support.cloudflare.com/hc/en-us/articles/200169156-Identifying-network-ports-compatible-with-Cloudflare-s-proxy</a></li>
+</ul>
 
                 
             </div>
@@ -451,7 +574,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.ex1t.xyz/2020/05/12/mac%E4%B8%8B%E5%AE%89%E8%A3%85frida%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">https://www.ex1t.xyz/2020/05/12/mac%E4%B8%8B%E5%AE%89%E8%A3%85frida%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</a>
+                    <a href="https://www.ex1t.xyz/2021/03/03/%E4%B8%BB%E6%9C%BA%E9%9A%90%E8%97%8F%E6%95%99%E7%A8%8B/">https://www.ex1t.xyz/2021/03/03/%E4%B8%BB%E6%9C%BA%E9%9A%90%E8%97%8F%E6%95%99%E7%A8%8B/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -488,7 +611,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/cobaltstrike/">
+                                    <span class="chip bg-color">cobaltstrike</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -919,17 +1046,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/07/08/%E4%B8%80%E9%A2%98python%E5%8A%A0%E5%AF%86%E9%A2%98/">
+                <a href="/2021/03/03/%E4%B8%BB%E6%9C%BA%E9%9A%90%E8%97%8F%E6%95%99%E7%A8%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="一题python加密题">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Cobalt Strike 主机隐藏教程">
                         
-                        <span class="card-title">一题python加密题</span>
+                        <span class="card-title">Cobalt Strike 主机隐藏教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -939,9 +1067,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-03
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -950,15 +1078,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                    <a href="/tags/ctf/">
-                        <span class="chip bg-color">Ctf</span>
+                    <a href="/tags/cobaltstrike/">
+                        <span class="chip bg-color">cobaltstrike</span>
                     </a>
                     
                 </div>
@@ -972,13 +1097,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/05/09/%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E7%AE%80%E8%BF%B0/">
+                <a href="/2021/01/25/%E4%BD%BF%E7%94%A8elk%E6%90%AD%E5%BB%BA%E5%AF%86%E7%A0%81%E7%BB%9F%E8%AE%A1%E5%BA%93/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="常见漏洞描述">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="使用ELK搭建密码统计库">
                         
-                        <span class="card-title">常见漏洞描述</span>
+                        <span class="card-title">使用ELK搭建密码统计库</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -989,12 +1114,12 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-25
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            诚默
+                            k3vi
                             
                         </span>
                     </div>
@@ -1002,8 +1127,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%BC%8F%E6%B4%9E/">
-                        <span class="chip bg-color">漏洞</span>
+                    <a href="/tags/elk/">
+                        <span class="chip bg-color">elk</span>
                     </a>
                     
                 </div>
