@@ -6,7 +6,7 @@
   <link href="https://www.ex1t.xyz/atom.xml" rel="self"/>
   
   <link href="https://www.ex1t.xyz/"/>
-  <updated>2021-08-02T02:15:57.147Z</updated>
+  <updated>2021-08-10T02:20:26.824Z</updated>
   <id>https://www.ex1t.xyz/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>内网信息收集之-windows</title>
+    <link href="https://www.ex1t.xyz/2021/08/10/%E5%86%85%E7%BD%91%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B9%8B-windows/"/>
+    <id>https://www.ex1t.xyz/2021/08/10/%E5%86%85%E7%BD%91%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B9%8B-windows/</id>
+    <published>2021-08-10T02:18:38.000Z</published>
+    <updated>2021-08-10T02:20:26.824Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、序言&quot;&gt;&lt;a href=&quot;#一、序言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="信息收集" scheme="https://www.ex1t.xyz/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"/>
+    
+    <category term="内网渗透" scheme="https://www.ex1t.xyz/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>weblogic漏洞总结</title>
@@ -482,32 +507,6 @@
     <category term="kali" scheme="https://www.ex1t.xyz/tags/kali/"/>
     
     <category term="Vmware" scheme="https://www.ex1t.xyz/tags/vmware/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python3利用API查询天气及地理信息</title>
-    <link href="https://www.ex1t.xyz/2020/01/17/python3%E5%88%A9%E7%94%A8api%E6%9F%A5%E8%AF%A2%E5%A4%A9%E6%B0%94%E5%8F%8A%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF/"/>
-    <id>https://www.ex1t.xyz/2020/01/17/python3%E5%88%A9%E7%94%A8api%E6%9F%A5%E8%AF%A2%E5%A4%A9%E6%B0%94%E5%8F%8A%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF/</id>
-    <published>2020-01-17T05:45:00.000Z</published>
-    <updated>2020-12-30T10:43:33.881Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;  在学习python的过程中，看到利用api接口的练习，就写了这么一个功能模块，可以通过ip地址/城市名称/城市标识ID/auto_ip等查询天气和地理信息。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;API-amp-KEY&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="python" scheme="https://www.ex1t.xyz/tags/python/"/>
     
   </entry>
   
