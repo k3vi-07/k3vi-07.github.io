@@ -6,7 +6,7 @@
   <link href="https://www.ex1t.xyz/atom.xml" rel="self"/>
   
   <link href="https://www.ex1t.xyz/"/>
-  <updated>2021-08-10T02:20:26.824Z</updated>
+  <updated>2021-08-25T08:15:02.914Z</updated>
   <id>https://www.ex1t.xyz/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>docker攻防总结</title>
+    <link href="https://www.ex1t.xyz/2021/08/25/docker%E6%94%BB%E9%98%B2%E6%80%BB%E7%BB%93/"/>
+    <id>https://www.ex1t.xyz/2021/08/25/docker%E6%94%BB%E9%98%B2%E6%80%BB%E7%BB%93/</id>
+    <published>2021-08-25T08:13:41.000Z</published>
+    <updated>2021-08-25T08:15:02.914Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、序言&quot;&gt;&lt;a href=&quot;#一、序言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="渗透测试" scheme="https://www.ex1t.xyz/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    <category term="docker" scheme="https://www.ex1t.xyz/tags/docker/"/>
+    
+    <category term="攻防" scheme="https://www.ex1t.xyz/tags/%E6%94%BB%E9%98%B2/"/>
+    
+  </entry>
   
   <entry>
     <title>内网信息收集之-windows</title>
@@ -478,34 +505,6 @@
     <category term="poc" scheme="https://www.ex1t.xyz/tags/poc/"/>
     
     <category term="漏洞" scheme="https://www.ex1t.xyz/tags/%E6%BC%8F%E6%B4%9E/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在VMware 15下安装kali 2019.4，并进行相关配置配置</title>
-    <link href="https://www.ex1t.xyz/2020/02/18/%E5%9C%A8vmware-15%E4%B8%8B%E5%AE%89%E8%A3%85kali-2019-4%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE%E9%85%8D%E7%BD%AE/"/>
-    <id>https://www.ex1t.xyz/2020/02/18/%E5%9C%A8vmware-15%E4%B8%8B%E5%AE%89%E8%A3%85kali-2019-4%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE%E9%85%8D%E7%BD%AE/</id>
-    <published>2020-02-18T01:03:00.000Z</published>
-    <updated>2020-12-30T10:43:33.882Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;在VMware 15下安装kali 2019.4，并进行相关配置，安装vmware-tools、配置国内源、进行更新&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="kali" scheme="https://www.ex1t.xyz/tags/kali/"/>
-    
-    <category term="Vmware" scheme="https://www.ex1t.xyz/tags/vmware/"/>
     
   </entry>
   
