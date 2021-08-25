@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Ex1t" type="application/atom+xml">
 </head>
@@ -457,6 +457,7 @@ bootstrap.memory_lock: true
 network.host：127.0.0.1
 http.port:9200
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>启动elasticsearch</p>
 <p>通过命令<code>./bin/elasticsearch</code> 直接启动，以前台的形式运行。通过命令<code>curl 127.0.0.1:9200</code>查看是否启动成功。</p>
 <p><img src="http://img.ex1t.xyz/20201211111927.png" alt="image-20201211111927281"></p>
@@ -464,6 +465,7 @@ http.port:9200
 <p>文件位置：./config/jvm.options</p>
 <pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">-Xms8g
 -Xmx8g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>之后使用命令<code>nohup ./bin/elasticsearch &amp;</code>以后台的方式运行ES</p>
 <h3 id="2、Kibana"><a href="#2、Kibana" class="headerlink" title="2、Kibana"></a>2、Kibana</h3><p>下载kibana</p>
 <p>解压文件，<code>tar -zxvf kibana*.tar.gz</code>，切换目录到kibana中，之后所有关于kibana的设置基本发生在此目录中。</p>
@@ -475,6 +477,7 @@ server.host: 0.0.0.0 #建议改成全部网卡
 #elasticsearch 地址
 elasticsearch.hosts:["http://localhost:9200"] #根据实际情况配置，我上面配置的是localhost也就是127.0.0.1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>之后通过命令<code>nohup ./bin/kibana &amp;</code>在后台运行kabana，通过host:5601在浏览器访问kibana</p>
 <p><img src="http://img.ex1t.xyz/20201211123637.png" alt="image-20201211123637929"></p>
 <h3 id="3、logstash"><a href="#3、logstash" class="headerlink" title="3、logstash"></a>3、logstash</h3><blockquote>
@@ -522,6 +525,7 @@ output {
   }
 }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>我们根据上面的示例文件配置一个weakpass.conf文件</p>
 <pre class="line-numbers language-none"><code class="language-none">input{
 	file {
@@ -545,12 +549,14 @@ output{
         codec =&gt; rubydebug
     }
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>使用命令    <code>./bin/logstash -f config/weakpass.conf</code>来使用我们写的配置文件导入数据。</p>
 <p><img src="http://img.ex1t.xyz/20201211135507.png" alt="image-20201211135507007"></p>
 <p>如果运行命令之后没有数据输出，建议删除**<u>./data</u>**的所有文件，一定要看清楚目录。</p>
 <p><img src="http://img.ex1t.xyz/20201211140317.png" alt="image-20201211140317413"></p>
 <h4 id="3-3-垃圾数据剔除"><a href="#3-3-垃圾数据剔除" class="headerlink" title="3.3 垃圾数据剔除"></a>3.3 垃圾数据剔除</h4><p>为了减少数据的冗余度及硬盘空间的大小，所以我们要根据情况删除一些无用字段，如path、message、host等。我们在gork中加入配置</p>
 <pre class="line-numbers language-none"><code class="language-none">remove_field=&gt;["path","message","host"]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="http://img.ex1t.xyz/20201211140704.png" alt="image-20201211140704603"></p>
 <p><img src="http://img.ex1t.xyz/20201211140439.png" alt="image-20201211140439453"></p>
 <p>通过这样的配置，我们的数据量就减少了，其实时间戳也是可以删除了，而且并没有存在的意义，每条记录都带一个时间戳，实在是占用硬盘 空间。</p>
@@ -584,6 +590,7 @@ output{
         }               
 }
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="3-5-使用kinaba"><a href="#3-5-使用kinaba" class="headerlink" title="3.5 使用kinaba"></a>3.5 使用kinaba</h4><p>之后我们就可以在kibana中的索引管理中看到我们的索引<img src="http://img.ex1t.xyz/20201211142722.png" alt="image-20201211142722173"></p>
 <p>这是我们就可以根据所以创建索引模式了</p>
 <p><img src="http://img.ex1t.xyz/20201211142850.png" alt="image-20201211142850371"></p>

