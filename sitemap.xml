@@ -349,6 +349,13 @@
   </url>
   
   <url>
+    <loc>https://k3vi-07.github.io/tags/linux/</loc>
+    <lastmod>2023-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://k3vi-07.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</loc>
     <lastmod>2023-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -370,7 +377,7 @@
   </url>
   
   <url>
-    <loc>https://k3vi-07.github.io/tags/linux/</loc>
+    <loc>https://k3vi-07.github.io/tags/kali/</loc>
     <lastmod>2023-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -378,13 +385,6 @@
   
   <url>
     <loc>https://k3vi-07.github.io/tags/mysql/</loc>
-    <lastmod>2023-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://k3vi-07.github.io/tags/kali/</loc>
     <lastmod>2023-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -412,14 +412,14 @@
   </url>
   
   <url>
-    <loc>https://k3vi-07.github.io/tags/cobaltstrike/</loc>
+    <loc>https://k3vi-07.github.io/tags/ctf/</loc>
     <lastmod>2023-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://k3vi-07.github.io/tags/ctf/</loc>
+    <loc>https://k3vi-07.github.io/tags/cobaltstrike/</loc>
     <lastmod>2023-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -489,14 +489,14 @@
   </url>
   
   <url>
-    <loc>https://k3vi-07.github.io/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</loc>
+    <loc>https://k3vi-07.github.io/tags/wsl/</loc>
     <lastmod>2023-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://k3vi-07.github.io/tags/wsl/</loc>
+    <loc>https://k3vi-07.github.io/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2023-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
