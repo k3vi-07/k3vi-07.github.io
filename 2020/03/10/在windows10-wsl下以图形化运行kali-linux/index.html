@@ -75,7 +75,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/img/head.jpg" class="js-avatar">
+			<img src="http://img.ex1t.xyz/crop.jpeg" class="js-avatar">
 		</a>
 		<hgroup>
 			<h1 class="header-author"><a href="/">k3vi</a></h1>
@@ -146,7 +146,7 @@
 		<header id="header" class="inner">
 			<div class="profilepic">
 				<a href="/">
-					<img src="/img/head.jpg" class="js-avatar">
+					<img src="http://img.ex1t.xyz/crop.jpeg" class="js-avatar">
 				</a>
 			</div>
 			<hgroup>
@@ -575,6 +575,10 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted unive
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">渗透测试</a>
               </li>
              
@@ -584,10 +588,6 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted unive
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">攻防</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,10 +607,6 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted unive
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">weblogic</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Ctf</a>
               </li>
              
@@ -623,11 +619,7 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted unive
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">信息收集</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内网渗透</a>
+                <a href="javascript:void(0)" class="js-tag color4">weblogic</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -651,15 +643,23 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted unive
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">信息收集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内网渗透</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">wsl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Vmware</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">wsl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -792,6 +792,35 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted unive
   </div>
 
   
+<script type="text/javascript" src="/plugins/TweenMax/TweenMax.min.js"></script>
+<script type="text/javascript" src="/plugins/TweenMax/HoverImg.js"></script>
+
+<script>
+
+
+  var hoverEffect = {
+    "subNav": ".left-col .social a"
+  }
+
+
+  for (var x in hoverEffect) {
+    // 初始化data-img属性值
+    let $em = document.querySelectorAll(hoverEffect[x]);
+    $em.forEach(($a) => {
+      //console.log($a.href);
+      if (isImageType($a.href)) {
+        $a.setAttribute("data-img", $a.href)
+      }
+    })
+    // 实现悬停元素预览图片效果
+    let $a = document.querySelectorAll(hoverEffect[x] + "[data-img]");
+    $a.forEach(($em) => {
+      new HoverImgFx1($em)
+    })
+  }
+
+</script>
+
   
 <script type="text/javascript" src="/plugins/activate-power-mode/activate-power-mode.js"></script>
 <script>
