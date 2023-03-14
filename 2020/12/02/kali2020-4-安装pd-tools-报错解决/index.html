@@ -245,9 +245,9 @@
     <p>不是翻译</p>
 <span id="more"></span>
 <ol>
-<li> I managed to get Parallels Tools working today on my freshly updated Kali system by following the steps at <a target="_blank" rel="noopener" href="https://kb.parallels.com/123968">https://kb.parallels.com/123968</a> but stopping before running ./install. Then follow the steps:</li>
+<li>I managed to get Parallels Tools working today on my freshly updated Kali system by following the steps at <a target="_blank" rel="noopener" href="https://kb.parallels.com/123968">https://kb.parallels.com/123968</a> but stopping before running ./install. Then follow the steps:</li>
 <li>Move into the kmods directory, where you should see a file called prl_mod.tar.gz. Extract this archive so we can edit it.<br> 复制文件夹中所有文件到任意目录，进入kmos目录，解压prl_mod.tar.gz。</li>
-<li>Open the file prl_fs/SharedFolders/Guest/Linux/prl_fs/inode.c and add the line “#define      segment_eq(a, b) ((a).seg == (b).seg)” to the top.<br> 打开文件<code>prl_fs/SharedFolders/Guest/Linux/prl_fs/inode.c</code>将内容<code>#define segment_eq(a, b) ((a).seg == (b).seg)"</code>放到文件开头</li>
+<li>Open the file prl_fs/SharedFolders/Guest/Linux/prl_fs/inode.c and add the line “#define 	 segment_eq(a, b) ((a).seg == (b).seg)” to the top.<br>打开文件<code>prl_fs/SharedFolders/Guest/Linux/prl_fs/inode.c</code>将内容<code>#define segment_eq(a, b) ((a).seg == (b).seg)"</code>放到文件开头</li>
 <li>Open the file prl_fs_freeze/Snapshot/Guest/Linux/prl_freeze/prl_fs_freeze.c and add the line “#include &lt;linux/blkdev.h&gt;” to the top.<br>打开文件<code>prl_fs_freeze/Snapshot/Guest/Linux/prl_freeze/prl_fs_freeze.c</code>将内容<code>#include &lt;linux/blkdev.h&gt;</code>放在文件开头</li>
 <li>Open the files prl_fs/SharedFolders/Guest/Linux/prl_fs/Makefile and prl_vid/Video/Guest/Linux/kmod/Makefile, and add the line “KBUILD_EXTRA_SYMBOLS := /usr/lib/parallels-tools/kmods/prl_tg/Toolgate/Guest/Linux/prl_tg/Module.symvers” to the top.<br>编辑文件<code>prl_fs/SharedFolders/Guest/Linux/prl_fs/Makefile</code>和<code>prl_vid/Video/Guest/Linux/kmod/Makefile</code>，将内容<code>KBUILD_EXTRA_SYMBOLS := /usr/lib/parallels-tools/kmods/prl_tg/Toolgate/Guest/Linux/prl_tg/Module.symvers</code>添加到文件头</li>
 <li>Re-create the archive with the edited files.<br>使用kmods目录下命令创建压缩包<code>tar tar -zcvf prl_mod.tar.gz .</code></li>
@@ -590,18 +590,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">frp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">reGeorg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">信息收集</a>
               </li>
              
@@ -614,15 +602,27 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">frp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ew</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">reGeorg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vmware</a>
+                <a href="javascript:void(0)" class="js-tag color4">wsl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">wsl</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vmware</a>
               </li>
              
               <li class="article-tag-list-item">

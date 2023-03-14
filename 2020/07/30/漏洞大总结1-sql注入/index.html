@@ -323,11 +323,9 @@
 <li>concat中的sql语句可以被执行</li>
 <li>concat执行sql注入语句，再利用updatexml的报错信息返回sql语句执行结果</li>
 <li>updatexml第二个参数必须是字符串吧，所以才需要借助返回值为字符串的concat函数。</li>
-<li>1 and (updatexml(1,concat(0x7e,(select user()),0x7e),1));<pre><code>  查询当前用户
-</code></pre>
-</li>
+<li>1 and (updatexml(1,concat(0x7e,(select user()),0x7e),1));<br>  查询当前用户</li>
 </ul>
-<h6 id="再说floor"><a href="#再说floor" class="headerlink" title="再说floor"></a>再说floor</h6><p>报错的原理是<strong>rand</strong>和<strong>ordery by</strong>或<strong>group by</strong>的冲突<br><code>select count(*) from test group by floor(rand(0)*2);</code><br>因为 rand 函数的特殊性（如果使用rand()的话，该值会被计算多次）<br>group by 进行分组时，<strong>floor(rand(0)*2)**执行一次（查看分组是否存在），如果虚拟表中不存在该分组，那么在插入新分组的时候 **floor(rand(0)*2)</strong> 就又计算了一次。（其实在上述 rand(0) 产生多个数据的时候，也能观察出来。只要 rand(0) 被调用，一定会产生新值）。<br>rand是伪随机。<br>所以*<em>floor(rand(0)<em>2)</em></em>值依此是011011001<br>当 group by 对其进行分组的时候，首先遇到第一个值 0 ，发现 0 不存在，于是需要插入分组，就在这时，*<em>floor(rand(0)<em>2)</em></em>再次被触发，生成第二个值 1 ，因此最终插入虚拟表的也就是第二个值 1 ；然后遇到第三个值 1 ，因为已经存在分组 1 了，就直接计数加1（这时1的计数变为2）;遇到第四个值 0 的时候，发现 0 不存在，于是又需要插入新分组，然后floor(rand(0)*2)又被触发，生成第五个值 1 ，因此这时还是往虚拟表里插入分组 1 ，但是，分组 1 已经存在了！所以报错</p>
+<h6 id="再说floor"><a href="#再说floor" class="headerlink" title="再说floor"></a>再说floor</h6><p>报错的原理是<strong>rand</strong>和<strong>ordery by</strong>或<strong>group by</strong>的冲突<br><code>select count(*) from test group by floor(rand(0)*2);</code><br>因为 rand 函数的特殊性（如果使用rand()的话，该值会被计算多次）<br>group by 进行分组时，**floor(rand(0)*2)**执行一次（查看分组是否存在），如果虚拟表中不存在该分组，那么在插入新分组的时候 <em><em>floor(rand(0)<em>2)</em></em> 就又计算了一次。（其实在上述 rand(0) 产生多个数据的时候，也能观察出来。只要 rand(0) 被调用，一定会产生新值）。<br>rand是伪随机。<br>所以</em>*floor(rand(0)*2)<strong>值依此是011011001<br>当 group by 对其进行分组的时候，首先遇到第一个值 0 ，发现 0 不存在，于是需要插入分组，就在这时，</strong>floor(rand(0)*2)**再次被触发，生成第二个值 1 ，因此最终插入虚拟表的也就是第二个值 1 ；然后遇到第三个值 1 ，因为已经存在分组 1 了，就直接计数加1（这时1的计数变为2）;遇到第四个值 0 的时候，发现 0 不存在，于是又需要插入新分组，然后floor(rand(0)*2)又被触发，生成第五个值 1 ，因此这时还是往虚拟表里插入分组 1 ，但是，分组 1 已经存在了！所以报错</p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">?id=1'+
 and(
     select 1 from (select count(*),concat((select ( 
@@ -873,18 +871,6 @@ CHAR(101)+CHAR(97)+CHAR(115)+CHAR(116)。<span aria-hidden="true" class="line-nu
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">frp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">reGeorg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">信息收集</a>
               </li>
              
@@ -897,15 +883,27 @@ CHAR(101)+CHAR(97)+CHAR(115)+CHAR(116)。<span aria-hidden="true" class="line-nu
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">frp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ew</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">reGeorg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vmware</a>
+                <a href="javascript:void(0)" class="js-tag color4">wsl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">wsl</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vmware</a>
               </li>
              
               <li class="article-tag-list-item">

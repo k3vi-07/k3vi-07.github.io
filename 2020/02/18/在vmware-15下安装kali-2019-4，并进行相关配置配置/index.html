@@ -263,16 +263,20 @@
 <p>在VMware 15下安装kali 2019.4，并进行相关配置，安装vmware-tools、配置国内源、进行更新</p>
 </blockquote>
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
-<li>镜像地址：<a target="_blank" rel="noopener" href="http://mirrors.163.com/kali-images/kali-2019.4/kali-linux-2019.4-gnome-amd64.iso">http://mirrors.163.com/kali-images/kali-2019.4/kali-linux-2019.4-gnome-amd64.iso</a><span id="more"></span></li>
-<li>虚拟机版本： vmware 15，下载地址：<a target="_blank" rel="noopener" href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.5.1-15018445.exe">https://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.5.1-15018445.exe</a></li>
-<li>虚拟机资源配置要求<ol>
+<li><p>镜像地址：<a target="_blank" rel="noopener" href="http://mirrors.163.com/kali-images/kali-2019.4/kali-linux-2019.4-gnome-amd64.iso">http://mirrors.163.com/kali-images/kali-2019.4/kali-linux-2019.4-gnome-amd64.iso</a></p>
+<span id="more"></span></li>
+<li><p>虚拟机版本： vmware 15，下载地址：<a target="_blank" rel="noopener" href="https://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.5.1-15018445.exe">https://download3.vmware.com/software/wkst/file/VMware-workstation-full-15.5.1-15018445.exe</a></p>
+</li>
+<li><p>虚拟机资源配置要求</p>
+<ol>
 <li>硬盘：60G</li>
 <li>内存：大于等于2G</li>
 <li>CPU：2核心，并在硬件中开启VT</li>
 <li>UEFI模式，非传统bios</li>
 </ol>
 </li>
-<li>安装过程参考<a target="_blank" rel="noopener" href="http://note.youdao.com/noteshare?id=d8f0b81392a79db38c4635c50e4b54a8&amp;sub=E5AAD49F4CA842D8987324FB8523488A">kali 2020.1安装教程</a>和上课视频</li>
+<li><p>安装过程参考<a target="_blank" rel="noopener" href="http://note.youdao.com/noteshare?id=d8f0b81392a79db38c4635c50e4b54a8&amp;sub=E5AAD49F4CA842D8987324FB8523488A">kali 2020.1安装教程</a>和上课视频</p>
+</li>
 </ul>
 <h2 id="KALI安装过程"><a href="#KALI安装过程" class="headerlink" title="KALI安装过程"></a>KALI安装过程</h2><ul>
 <li>虚拟机配置部分略，参考上诉内容</li>
@@ -299,20 +303,22 @@
 </li>
 <li><p>安装结束重启</p>
 <p><img src="http://img.ex1t.xyz/20201230171552.png"></p>
-<h2 id="配置虚拟机"><a href="#配置虚拟机" class="headerlink" title="配置虚拟机"></a>配置虚拟机</h2></li>
+</li>
 </ol>
 </li>
+</ul>
+<h2 id="配置虚拟机"><a href="#配置虚拟机" class="headerlink" title="配置虚拟机"></a>配置虚拟机</h2><ul>
 <li>安装vmware tools<ol>
 <li>拷贝文件VMwareTools-*tar.gz到下载文件夹。<img src="http://img.ex1t.xyz/20201230172019.png"></li>
 <li>在下载文件夹空白处右击–&gt; 在此处打开命令行，使用命令<code>tar -zxvf VMwareTools-*.tar.gz</code>,之后你回在下载文件夹中看到<img src="http://img.ex1t.xyz/20201230172106.png"></li>
-<li>执行如下命令，进入文件夹vmware-tools-distrib，并执行安装程序，之后一路回车到底<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> vmware-tools-distrib
+<li>执行如下命令，进入文件夹vmware-tools-distrib，并执行安装程序，之后一路回车到底  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> vmware-tools-distrib
 ./vmware-install.pl<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 <li>看到如下画面安装成功![图片上传中…]</li>
 </ol>
 </li>
 <li>配置apt源<ol>
 <li>使用命令编辑文件 <code>gedit /etc/apt/sources.list</code></li>
-<li>添加如下内容到文件中，<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib
+<li>添加如下内容到文件中，  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib
 deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 </ol>
 </li>
@@ -660,18 +666,6 @@ deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib<span a
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">frp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ew</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">reGeorg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">信息收集</a>
               </li>
              
@@ -684,15 +678,27 @@ deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib<span a
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">frp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ew</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">reGeorg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Vmware</a>
+                <a href="javascript:void(0)" class="js-tag color4">wsl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">wsl</a>
+                <a href="javascript:void(0)" class="js-tag color2">Vmware</a>
               </li>
              
               <li class="article-tag-list-item">

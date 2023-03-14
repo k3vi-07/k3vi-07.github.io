@@ -433,27 +433,6 @@
   </url>
   
   <url>
-    <loc>https://k3vi-07.github.io/tags/frp/</loc>
-    <lastmod>2023-03-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://k3vi-07.github.io/tags/ew/</loc>
-    <lastmod>2023-03-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://k3vi-07.github.io/tags/regeorg/</loc>
-    <lastmod>2023-03-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://k3vi-07.github.io/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</loc>
     <lastmod>2023-03-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -475,6 +454,27 @@
   </url>
   
   <url>
+    <loc>https://k3vi-07.github.io/tags/frp/</loc>
+    <lastmod>2023-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://k3vi-07.github.io/tags/ew/</loc>
+    <lastmod>2023-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://k3vi-07.github.io/tags/regeorg/</loc>
+    <lastmod>2023-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://k3vi-07.github.io/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/</loc>
     <lastmod>2023-03-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -482,14 +482,14 @@
   </url>
   
   <url>
-    <loc>https://k3vi-07.github.io/tags/vmware/</loc>
+    <loc>https://k3vi-07.github.io/tags/wsl/</loc>
     <lastmod>2023-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://k3vi-07.github.io/tags/wsl/</loc>
+    <loc>https://k3vi-07.github.io/tags/vmware/</loc>
     <lastmod>2023-03-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
